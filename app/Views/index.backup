@@ -1,0 +1,2669 @@
+<?= $this->extend('templates/index'); ?>
+<?= $this->section('page-content'); ?>
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-12 text-center">
+                <p class="title-text m-0" style="<?= ($ui_mode[0]['code'] == 'dark-mode' ? 'color:#ffffff' : ' '); ?>">Selamat Datang di MediaCenter Kajari Barito Kuala</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <button class="medsos-button col-12 col-sm-6 col-md-3 mb-3">
+                <div class="bg-info info-box">
+                    <span class="info-box-icon"><i class="fab fa-facebook-f"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text" onclick="window.open('https://www.facebook.com/kejari.batola', '__blank').focus();">Facebook</span>
+                    </div>
+
+                </div>
+                <!-- /.info-box-content -->
+            </button>
+            <!-- /.col -->
+
+            <button class="medsos-button col-12 col-sm-6 col-md-3 mb-3">
+                <div class="bg-danger info-box">
+                    <span class="info-box-icon"><i class="fab fa-youtube"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text" onclick="window.open('https://www.youtube.com/channel/UCGky6JLxeAnaboSki2s9hog', '__blank').focus();">YouTube</span>
+                    </div>
+                </div>
+            </button>
+
+            <button class="medsos-button col-12 col-sm-6 col-md-3 mb-3">
+                <div class="bg-warning info-box">
+                    <span class="info-box-icon"><i class="fab fa-instagram" style="color: white"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text" style="color: white" onclick="window.open('https://www.instagram.com/kejaribaritokuala/?hl=id', '__blank').focus();">Instagram</span>
+                    </div>
+                </div>
+            </button>
+
+            <button class="medsos-button col-12 col-sm-6 col-md-3 mb-3">
+                <div class="bg-success info-box">
+                    <span class="info-box-icon"><i class="fab fa-cloudsmith"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text" onclick="window.open('https://www.kejari-baritokuala.go.id/', '__blank').focus();">Web</span>
+                    </div>
+                </div>
+
+                <!-- /.info-box-content -->
+            </button>
+
+            <!-- fix for small devices only -->
+            <div class="clearfix hidden-md-up"></div>
+
+            <!-- /.col -->
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Pegawai Utama</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <div class="card-body p-0">
+                        <ul class="users-list clearfix">
+                            <?php foreach ($dataPeg as $dp) : ?>
+                                <li>
+                                    <img src="<?= base_url(); ?>/img/profile/<?= $dp['foto']; ?>" style="height: 200px; width:200px">
+                                    <a class="users-list-name mt-2" href="#"><?= $dp['nama']; ?></a>
+                                    <span class="users-list-date"><?= $dp['jabatan']; ?></span>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+
+                    </div>
+
+                    <div class="card-footer text-center">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+            <section class="col-md-8 connectedSortable ui-sortable">
+                <!-- Custom tabs (Charts with tabs)-->
+                <div class="card">
+                    <div class="card-header ui-sortable-handle" style="cursor: move;">
+                        <h3 class="card-title">
+                            <i class="fas fa-map-marked-alt mr-1"></i>
+                            Peta
+                        </h3>
+                        <div class="card-tools">
+                            <ul class="nav nav-pills ml-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Peta</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#sales-chart" data-toggle="tab">Peta Realtime</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div><!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="tab-content p-0">
+                            <!-- Morris chart - Sales -->
+                            <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 720px;">
+                                <div class="chartjs-size-monitor">
+                                    <div class="chartjs-size-monitor-expand">
+                                        <div class=""></div>
+                                    </div>
+                                    <div class="chartjs-size-monitor-shrink">
+                                        <div class=""></div>
+                                    </div>
+                                </div>
+                                <center>
+                                    <img src="<?= base_url(); ?>/img/batola.png" width="500px" height="" class="">
+                                </center>
+                            </div>
+                            <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 720px;">
+                                <div class="d-md-flex">
+                                    <div class="p-1 flex-fill" style="overflow: hidden">
+                                        <!-- Map will be created here -->
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d509993.8440562183!2d114.5886038!3d-3.006443!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de443e27a71dc81%3A0x3761feddf5ccff4e!2sKabupaten%20Barito%20Kuala%2C%20Kalimantan%20Selatan!5e0!3m2!1sid!2sid!4v1627540799262!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                        <div id="world-map-markers" style="height: 720px; overflow: hidden">
+                                            <div class="map"></div>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-pane-right -->
+                                </div><!-- /.d-md-flex -->
+                            </div>
+                        </div>
+                    </div><!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+
+
+            </section>
+            <div class="col-md-4">
+                <!-- Info Boxes Style 2 -->
+                <h3 class="text-center mb-4">Aplikasi Internal</h3>
+
+                <div class="medsos-button">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-network-wired"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text" onclick="window.open('#', '__blank').focus();">R.IN</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+
+                <div class="medsos-button">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-success elevation-1"><i class="fas fa-users" style="color: white"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text" onclick="window.open('#', '__blank').focus();">PI-PIDSUS</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+
+                <div class="medsos-button">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-navy elevation-1"><img src="dist/img/CT_logo.png" alt=""></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text" onclick="window.open('#', '__blank').focus();">McBatola</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+
+                <h3 class="text-center mb-4">CMS</h3>
+
+                <div class="medsos-button">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-danger elevation-1"><i class="far fa-address-book"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text" onclick="window.open('#', '__blank').focus();">IndraSembilan</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+
+                <div class="medsos-button">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-success elevation-1"><i class="fas fa-database"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text" onclick="window.open('http://10.22.10.101:4111/', '__blank').focus();">PIDUM</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+
+                <div class="medsos-button">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-shekel-sign" style="color: white;"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text" onclick="window.open('http://10.22.10.101:4111/', '__blank').focus();">PIDSUS</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+
+                <div class="medsos-button">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-info elevation-1"><i class="fas fa-file-alt" style="color: white;"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text" onclick="window.open('http://10.22.10.101:4111/', '__blank').focus();">DATUN</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </div>
+                    <!-- /.info-box -->
+                </div>
+                <!-- Calendar -->
+                <div class="card bg-gradient-success">
+                    <div class="card-header border-0 ui-sortable-handle" style="cursor: move;">
+
+                        <h3 class="card-title">
+                            <i class="far fa-calendar-alt"></i>
+                            Kalender
+                        </h3>
+                        <!-- tools card -->
+                        <div class="card-tools">
+                            <!-- button with a dropdown -->
+
+                            <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-success btn-sm" data-card-widget="remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <!-- /. tools -->
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body pt-0">
+                        <!--The calendar -->
+                        <div id="calendar" style="width: 100%">
+                            <div class="bootstrap-datetimepicker-widget usetwentyfour">
+                                <ul class="list-unstyled">
+                                    <li class="show">
+                                        <div class="datepicker">
+                                            <div class="datepicker-days" style="">
+                                                <table class="table table-sm">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="prev" data-action="previous"><span class="fa fa-chevron-left" title="Previous Month"></span></th>
+                                                            <th class="picker-switch" data-action="pickerSwitch" colspan="5" title="Select Month">August 2021</th>
+                                                            <th class="next" data-action="next"><span class="fa fa-chevron-right" title="Next Month"></span></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="dow">Su</th>
+                                                            <th class="dow">Mo</th>
+                                                            <th class="dow">Tu</th>
+                                                            <th class="dow">We</th>
+                                                            <th class="dow">Th</th>
+                                                            <th class="dow">Fr</th>
+                                                            <th class="dow">Sa</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td data-action="selectDay" data-day="08/01/2021" class="day weekend">1</td>
+                                                            <td data-action="selectDay" data-day="08/02/2021" class="day today">2</td>
+                                                            <td data-action="selectDay" data-day="08/03/2021" class="day">3</td>
+                                                            <td data-action="selectDay" data-day="08/04/2021" class="day">4</td>
+                                                            <td data-action="selectDay" data-day="08/05/2021" class="day">5</td>
+                                                            <td data-action="selectDay" data-day="08/06/2021" class="day">6</td>
+                                                            <td data-action="selectDay" data-day="08/07/2021" class="day weekend">7</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td data-action="selectDay" data-day="08/08/2021" class="day weekend">8</td>
+                                                            <td data-action="selectDay" data-day="08/09/2021" class="day">9</td>
+                                                            <td data-action="selectDay" data-day="08/10/2021" class="day">10</td>
+                                                            <td data-action="selectDay" data-day="08/11/2021" class="day">11</td>
+                                                            <td data-action="selectDay" data-day="08/12/2021" class="day">12</td>
+                                                            <td data-action="selectDay" data-day="08/13/2021" class="day">13</td>
+                                                            <td data-action="selectDay" data-day="08/14/2021" class="day weekend">14</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td data-action="selectDay" data-day="08/15/2021" class="day weekend">15</td>
+                                                            <td data-action="selectDay" data-day="08/16/2021" class="day">16</td>
+                                                            <td data-action="selectDay" data-day="08/17/2021" class="day">17</td>
+                                                            <td data-action="selectDay" data-day="08/18/2021" class="day">18</td>
+                                                            <td data-action="selectDay" data-day="08/19/2021" class="day">19</td>
+                                                            <td data-action="selectDay" data-day="08/20/2021" class="day">20</td>
+                                                            <td data-action="selectDay" data-day="08/21/2021" class="day weekend">21</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td data-action="selectDay" data-day="08/22/2021" class="day weekend">22</td>
+                                                            <td data-action="selectDay" data-day="08/23/2021" class="day">23</td>
+                                                            <td data-action="selectDay" data-day="08/24/2021" class="day">24</td>
+                                                            <td data-action="selectDay" data-day="08/25/2021" class="day">25</td>
+                                                            <td data-action="selectDay" data-day="08/26/2021" class="day">26</td>
+                                                            <td data-action="selectDay" data-day="08/27/2021" class="day">27</td>
+                                                            <td data-action="selectDay" data-day="08/28/2021" class="day weekend">28</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td data-action="selectDay" data-day="08/29/2021" class="day weekend">29</td>
+                                                            <td data-action="selectDay" data-day="08/30/2021" class="day">30</td>
+                                                            <td data-action="selectDay" data-day="08/31/2021" class="day">31</td>
+                                                            <td data-action="selectDay" data-day="09/01/2021" class="day new">1</td>
+                                                            <td data-action="selectDay" data-day="09/02/2021" class="day new">2</td>
+                                                            <td data-action="selectDay" data-day="09/03/2021" class="day new">3</td>
+                                                            <td data-action="selectDay" data-day="09/04/2021" class="day new weekend">4</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td data-action="selectDay" data-day="09/05/2021" class="day new weekend">5</td>
+                                                            <td data-action="selectDay" data-day="09/06/2021" class="day new">6</td>
+                                                            <td data-action="selectDay" data-day="09/07/2021" class="day new">7</td>
+                                                            <td data-action="selectDay" data-day="09/08/2021" class="day new">8</td>
+                                                            <td data-action="selectDay" data-day="09/09/2021" class="day new">9</td>
+                                                            <td data-action="selectDay" data-day="09/10/2021" class="day new">10</td>
+                                                            <td data-action="selectDay" data-day="09/11/2021" class="day new weekend">11</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="datepicker-months" style="display: none;">
+                                                <table class="table-condensed">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="prev" data-action="previous"><span class="fa fa-chevron-left" title="Previous Year"></span></th>
+                                                            <th class="picker-switch" data-action="pickerSwitch" colspan="5" title="Select Year">2021</th>
+                                                            <th class="next" data-action="next"><span class="fa fa-chevron-right" title="Next Year"></span></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td colspan="7"><span data-action="selectMonth" class="month">Jan</span><span data-action="selectMonth" class="month">Feb</span><span data-action="selectMonth" class="month">Mar</span><span data-action="selectMonth" class="month">Apr</span><span data-action="selectMonth" class="month">May</span><span data-action="selectMonth" class="month">Jun</span><span data-action="selectMonth" class="month">Jul</span><span data-action="selectMonth" class="month active">Aug</span><span data-action="selectMonth" class="month">Sep</span><span data-action="selectMonth" class="month">Oct</span><span data-action="selectMonth" class="month">Nov</span><span data-action="selectMonth" class="month">Dec</span></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="datepicker-years" style="display: none;">
+                                                <table class="table-condensed">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="prev" data-action="previous"><span class="fa fa-chevron-left" title="Previous Decade"></span></th>
+                                                            <th class="picker-switch" data-action="pickerSwitch" colspan="5" title="Select Decade">2020-2029</th>
+                                                            <th class="next" data-action="next"><span class="fa fa-chevron-right" title="Next Decade"></span></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td colspan="7"><span data-action="selectYear" class="year old">2019</span><span data-action="selectYear" class="year">2020</span><span data-action="selectYear" class="year active">2021</span><span data-action="selectYear" class="year">2022</span><span data-action="selectYear" class="year">2023</span><span data-action="selectYear" class="year">2024</span><span data-action="selectYear" class="year">2025</span><span data-action="selectYear" class="year">2026</span><span data-action="selectYear" class="year">2027</span><span data-action="selectYear" class="year">2028</span><span data-action="selectYear" class="year">2029</span><span data-action="selectYear" class="year old">2030</span></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="datepicker-decades" style="display: none;">
+                                                <table class="table-condensed">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="prev" data-action="previous"><span class="fa fa-chevron-left" title="Previous Century"></span></th>
+                                                            <th class="picker-switch" data-action="pickerSwitch" colspan="5">2000-2090</th>
+                                                            <th class="next" data-action="next"><span class="fa fa-chevron-right" title="Next Century"></span></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td colspan="7"><span data-action="selectDecade" class="decade old" data-selection="2006">1990</span><span data-action="selectDecade" class="decade" data-selection="2006">2000</span><span data-action="selectDecade" class="decade active" data-selection="2016">2010</span><span data-action="selectDecade" class="decade active" data-selection="2026">2020</span><span data-action="selectDecade" class="decade" data-selection="2036">2030</span><span data-action="selectDecade" class="decade" data-selection="2046">2040</span><span data-action="selectDecade" class="decade" data-selection="2056">2050</span><span data-action="selectDecade" class="decade" data-selection="2066">2060</span><span data-action="selectDecade" class="decade" data-selection="2076">2070</span><span data-action="selectDecade" class="decade" data-selection="2086">2080</span><span data-action="selectDecade" class="decade" data-selection="2096">2090</span><span data-action="selectDecade" class="decade old" data-selection="2106">2100</span></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="picker-switch accordion-toggle"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+            <!-- Left col -->
+
+        </div>
+
+        <!-- Chart Anggaran  -->
+        <div class="row">
+            <div class="col-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">CAPAIAN ANGGARAN INTELIJEN, PEMBINAAN, PIDUM, PIDSUS, DATUN, DAN BB</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="row">
+
+
+                            <div class="col-md-4 text-center">
+                                <div class="small-box ">
+                                    <a href="#" class="small-box-footer bg-info">Intelijen</a>
+                                    <div class="inner">
+                                        <canvas id="chart-intel" width="400" height="300" style="background-color:rgba(255,255,255,1.00);border-radius:0px;width:700px;height:400px;padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px"></canvas>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer bg-danger">Edit <i class="fas fa-edit"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 text-center">
+                                <div class="small-box ">
+                                    <a href="#" class="small-box-footer bg-info">Pembinaan</a>
+                                    <div class="inner">
+                                        <canvas id="chart-pembinaan" width="400" height="300" style="background-color:rgba(255,255,255,1.00);border-radius:0px;width:700px;height:400px;padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px"></canvas>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer bg-danger">Edit <i class="fas fa-edit"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 text-center">
+                                <div class="small-box ">
+                                    <a href="#" class="small-box-footer bg-info">Tindak Pidana Umum</a>
+                                    <div class="inner">
+                                        <canvas id="chart-pidum" width="400" height="300" style="background-color:rgba(255,255,255,1.00);border-radius:0px;width:700px;height:400px;padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px"></canvas>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer bg-danger">Edit <i class="fas fa-edit"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 text-center">
+                                <div class="small-box ">
+                                    <a href="#" class="small-box-footer bg-info">Tindak Pidana Khusus</a>
+                                    <div class="inner">
+                                        <canvas id="chart-pidsus" width="400" height="300" style="background-color:rgba(255,255,255,1.00);border-radius:0px;width:700px;height:400px;padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px"></canvas>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer bg-danger">Edit <i class="fas fa-edit"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 text-center">
+                                <div class="small-box ">
+                                    <a href="#" class="small-box-footer bg-info">Perdata dan Tata Usaha Negara</a>
+                                    <div class="inner">
+                                        <canvas id="chart-datun" width="400" height="300" style="background-color:rgba(255,255,255,1.00);border-radius:0px;width:700px;height:400px;padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px"></canvas>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer bg-danger">Edit <i class="fas fa-edit"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 text-center">
+                                <div class="small-box ">
+                                    <a href="#" class="small-box-footer bg-info">Pengelolaa Barang Bukti dan Rampasan</a>
+                                    <div class="inner">
+                                        <canvas id="chart-bb" width="400" height="300" style="background-color:rgba(255,255,255,1.00);border-radius:0px;width:700px;height:400px;padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px"></canvas>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer bg-danger">Edit <i class="fas fa-edit"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+        <!-- Chart Anggaran End -->
+
+        <!-- Chart Kinerja -->
+        <div class="row">
+            <div class="col-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">CAPAIAN KINERJA INTELIJEN, PEMBINAAN, PIDUM, PIDSUS, DATUN, DAN BB</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="row">
+
+
+                            <div class="col-md-4 text-center">
+                                <div class="small-box ">
+                                    <a href="#" class="small-box-footer bg-info">Intelijen</a>
+                                    <div class="inner">
+                                        <canvas id="k-intel" width="400" height="300" style="background-color:rgba(255,255,255,1.00);border-radius:0px;width:700px;height:400px;padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px"></canvas>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer bg-danger">Edit <i class="fas fa-edit"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 text-center">
+                                <div class="small-box ">
+                                    <a href="#" class="small-box-footer bg-info">Pembinaan</a>
+                                    <div class="inner">
+                                        <canvas id="k-pembinaan" width="400" height="300" style="background-color:rgba(255,255,255,1.00);border-radius:0px;width:700px;height:400px;padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px"></canvas>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer bg-danger">Edit <i class="fas fa-edit"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 text-center">
+                                <div class="small-box ">
+                                    <a href="#" class="small-box-footer bg-info">Tindak Pidana Umum</a>
+                                    <div class="inner">
+                                        <canvas id="k-pidum" width="400" height="300" style="background-color:rgba(255,255,255,1.00);border-radius:0px;width:700px;height:400px;padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px"></canvas>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer bg-danger">Edit <i class="fas fa-edit"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 text-center">
+                                <div class="small-box ">
+                                    <a href="#" class="small-box-footer bg-info">Tindak Pidana Khusus</a>
+                                    <div class="inner">
+                                        <canvas id="k-pidsus" width="400" height="300" style="background-color:rgba(255,255,255,1.00);border-radius:0px;width:700px;height:400px;padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px"></canvas>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer bg-danger">Edit <i class="fas fa-edit"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 text-center">
+                                <div class="small-box ">
+                                    <a href="#" class="small-box-footer bg-info">Perdata dan Tata Usaha Negara</a>
+                                    <div class="inner">
+                                        <canvas id="k-datun" width="400" height="300" style="background-color:rgba(255,255,255,1.00);border-radius:0px;width:700px;height:400px;padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px"></canvas>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer bg-danger">Edit <i class="fas fa-edit"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 text-center">
+                                <div class="small-box ">
+                                    <a href="#" class="small-box-footer bg-info">Pengelolaa Barang Bukti dan Rampasan</a>
+                                    <div class="inner">
+                                        <canvas id="k-bb" width="400" height="300" style="background-color:rgba(255,255,255,1.00);border-radius:0px;width:700px;height:400px;padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px"></canvas>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer bg-danger">Edit <i class="fas fa-edit"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+        <!-- Chart Kinerja End -->
+
+    </div>
+</section>
+
+
+<!-- Chart Anggaran Scripts -->
+
+<script>
+    function MoreChartOptions() {}
+    var ChartData = {
+        labels: ["LPG",
+            "PAKEM", "PENKUM", "JMS",
+        ],
+        datasets: [{
+            fillColor: "rgba(52,152,219,1)",
+            strokeColor: "rgba(52,152,219,0.5)",
+            pointColor: "rgba(52,152,219,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1.00)",
+            data: [<?= explode('+', $c_intel[0]['lpg'])[0];  ?>, <?= explode('+', $c_intel[0]['pakem'])[0];  ?>, <?= explode('+', $c_intel[0]['penkum'])[0];  ?>, <?= explode('+', $c_intel[0]['jms'])[0];  ?>],
+            title: "Target"
+        }, {
+            fillColor: "rgba(255,208,0,1)",
+            strokeColor: "rgba(46,204,113,1)",
+            pointColor: "rgba(46,204,113,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1.00)",
+            data: [<?= explode('+', $c_intel[0]['lpg'])[1];  ?>, <?= explode('+', $c_intel[0]['pakem'])[1];  ?>, <?= explode('+', $c_intel[0]['penkum'])[1];  ?>, <?= explode('+', $c_intel[0]['jms'])[1];  ?>],
+            title: "Realisasi"
+        }, {
+            fillColor: "rgba(255,0,0,1)",
+            strokeColor: "rgba(155,89,182,1)",
+            pointColor: "rgba(155,89,182,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1)",
+            data: [<?= explode('+', $c_intel[0]['lpg'])[2];  ?>, <?= explode('+', $c_intel[0]['pakem'])[2];  ?>, <?= explode('+', $c_intel[0]['penkum'])[2];  ?>, <?= explode('+', $c_intel[0]['jms'])[2];  ?>],
+            title: "Sisa Anggaran"
+        }, ]
+    };
+    ChartOptions = {
+        decimalSeparator: ".",
+        thousandSeparator: ",",
+        spaceLeft: 12,
+        spaceRight: 12,
+        spaceTop: 12,
+        spaceBottom: 12,
+        scaleLabel: "<%=value+''%>",
+        yAxisMinimumInterval: 1,
+        scaleShowLabels: true,
+        scaleShowLine: true,
+        scaleLineStyle: "solid",
+        scaleLineWidth: 1,
+        scaleLineColor: "rgba(0,0,0,0.6)",
+        scaleOverlay: false,
+        scaleOverride: false,
+        scaleSteps: 10,
+        scaleStepWidth: 10,
+        scaleStartValue: 0,
+        inGraphDataShow: true,
+        inGraphDataTmpl: '<%=v3%>',
+        inGraphDataFontFamily: "'Open Sans'",
+        inGraphDataFontStyle: "normal bold",
+        inGraphDataFontColor: "rgba(255,255,255,1.00)",
+        inGraphDataFontSize: 12,
+        inGraphDataPaddingX: 0,
+        inGraphDataPaddingY: -5,
+        inGraphDataAlign: "center",
+        inGraphDataVAlign: "middle",
+        inGraphDataXPosition: 2,
+        inGraphDataYPosition: 2,
+        inGraphDataAnglePosition: 2,
+        inGraphDataRadiusPosition: 2,
+        inGraphDataRotate: 90,
+        inGraphDataPaddingAngle: 0,
+        inGraphDataPaddingRadius: 0,
+        inGraphDataBorders: false,
+        inGraphDataBordersXSpace: 1,
+        inGraphDataBordersYSpace: 1,
+        inGraphDataBordersWidth: 1,
+        inGraphDataBordersStyle: "solid",
+        inGraphDataBordersColor: "rgba(0,0,0,1)",
+        legend: true,
+        maxLegendCols: 5,
+        legendBlockSize: 15,
+        legendFillColor: 'rgba(255,255,255,0.00)',
+        legendColorIndicatorStrokeWidth: 1,
+        legendPosX: -2,
+        legendPosY: 4,
+        legendXPadding: 0,
+        legendYPadding: 0,
+        legendBorders: false,
+        legendBordersWidth: 1,
+        legendBordersStyle: "solid",
+        legendBordersColors: "rgba(102,102,102,1)",
+        legendBordersSpaceBefore: 5,
+        legendBordersSpaceLeft: 5,
+        legendBordersSpaceRight: 5,
+        legendBordersSpaceAfter: 5,
+        legendSpaceBeforeText: 5,
+        legendSpaceLeftText: 5,
+        legendSpaceRightText: 5,
+        legendSpaceAfterText: 5,
+        legendSpaceBetweenBoxAndText: 5,
+        legendSpaceBetweenTextHorizontal: 5,
+        legendSpaceBetweenTextVertical: 5,
+        legendFontFamily: "'Open Sans'",
+        legendFontStyle: "normal normal",
+        legendFontColor: "rgba(0,0,0,1)",
+        legendFontSize: 15,
+        showYAxisMin: false,
+        rotateLabels: "smart",
+        xAxisBottom: true,
+        yAxisLeft: true,
+        yAxisRight: false,
+        scaleFontFamily: "'Open Sans'",
+        scaleFontStyle: "normal normal",
+        scaleFontColor: "rgba(0,0,0,1)",
+        scaleFontSize: 12,
+        pointLabelFontFamily: "'Open Sans'",
+        pointLabelFontStyle: "normal normal",
+        pointLabelFontColor: "rgba(102,102,102,1)",
+        pointLabelFontSize: 12,
+        angleShowLineOut: true,
+        angleLineStyle: "solid",
+        angleLineWidth: 1,
+        angleLineColor: "rgba(0,0,0,0.1)",
+        percentageInnerCutout: 50,
+        scaleShowGridLines: true,
+        scaleGridLineStyle: "solid",
+        scaleGridLineWidth: 1,
+        scaleGridLineColor: "rgba(0,0,0,0.1)",
+        scaleXGridLinesStep: 1,
+        scaleYGridLinesStep: 3,
+        segmentShowStroke: true,
+        segmentStrokeStyle: "solid",
+        segmentStrokeWidth: 2,
+        segmentStrokeColor: "rgba(255,255,255,1.00)",
+        datasetStroke: true,
+        datasetFill: true,
+        datasetStrokeStyle: "solid",
+        datasetStrokeWidth: 2,
+        bezierCurve: true,
+        bezierCurveTension: 0.4,
+        pointDotStrokeStyle: "solid",
+        pointDotStrokeWidth: 1,
+        pointDotRadius: 3,
+        pointDot: true,
+        scaleTickSizeBottom: 5,
+        scaleTickSizeTop: 5,
+        scaleTickSizeLeft: 5,
+        scaleTickSizeRight: 5,
+        graphMin: 0,
+        barShowStroke: false,
+        barBorderRadius: 0,
+        barStrokeStyle: "solid",
+        barStrokeWidth: 1,
+        barValueSpacing: 15,
+        barDatasetSpacing: 0,
+        scaleShowLabelBackdrop: true,
+        scaleBackdropColor: 'rgba(255,255,255,0.75)',
+        scaleBackdropPaddingX: 2,
+        scaleBackdropPaddingY: 2,
+        animationEasing: 'linear',
+        animateRotate: true,
+        animateScale: false,
+        animationByDataset: false,
+        animationLeftToRight: false,
+        animationSteps: 80,
+        animation: true,
+        onAnimationComplete: function() {
+            MoreChartOptions2()
+        }
+    };
+    DrawTheChart(ChartData, ChartOptions, "chart-intel", "Bar");
+</script>
+
+<script>
+    function MoreChartOptions() {}
+    var ChartData = {
+        labels: ["Belanja Pegawai", "Belanja Barang", "Gedung BB"],
+        datasets: [{
+            fillColor: "rgba(52,152,219,1)",
+            strokeColor: "rgba(52,152,219,0.5)",
+            pointColor: "rgba(52,152,219,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1.00)",
+            data: [<?= explode('+', $c_pembinaan[0]['pegawai'])[0];  ?>, <?= explode('+', $c_pembinaan[0]['barang'])[0];  ?>, <?= explode('+', $c_pembinaan[0]['pembangunan'])[0];  ?>, ],
+            title: "Target"
+        }, {
+            fillColor: "rgba(255,208,0,1)",
+            strokeColor: "rgba(46,204,113,1)",
+            pointColor: "rgba(46,204,113,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1.00)",
+            data: [<?= explode('+', $c_pembinaan[0]['pegawai'])[1];  ?>, <?= explode('+', $c_pembinaan[0]['barang'])[1];  ?>, <?= explode('+', $c_pembinaan[0]['pembangunan'])[1];  ?>, ],
+            title: "Realisasi"
+        }, {
+            fillColor: "rgba(255,0,0,1)",
+            strokeColor: "rgba(155,89,182,1)",
+            pointColor: "rgba(155,89,182,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1)",
+            data: [<?= explode('+', $c_pembinaan[0]['pegawai'])[2];  ?>, <?= explode('+', $c_pembinaan[0]['barang'])[2];  ?>, <?= explode('+', $c_pembinaan[0]['pembangunan'])[2];  ?>, ],
+            title: "Sisa Anggaran"
+        }, ]
+    };
+    ChartOptions = {
+        decimalSeparator: ".",
+        thousandSeparator: ",",
+        spaceLeft: 12,
+        spaceRight: 12,
+        spaceTop: 12,
+        spaceBottom: 12,
+        scaleLabel: "<%=value+''%>",
+        yAxisMinimumInterval: 1,
+        scaleShowLabels: true,
+        scaleShowLine: true,
+        scaleLineStyle: "solid",
+        scaleLineWidth: 1,
+        scaleLineColor: "rgba(0,0,0,0.6)",
+        scaleOverlay: false,
+        scaleOverride: false,
+        scaleSteps: 10,
+        scaleStepWidth: 10,
+        scaleStartValue: 0,
+        inGraphDataShow: true,
+        inGraphDataTmpl: '<%=v3%>',
+        inGraphDataFontFamily: "'Open Sans'",
+        inGraphDataFontStyle: "normal bold",
+        inGraphDataFontColor: "rgba(255,255,255,1.00)",
+        inGraphDataFontSize: 12,
+        inGraphDataPaddingX: 0,
+        inGraphDataPaddingY: -5,
+        inGraphDataAlign: "center",
+        inGraphDataVAlign: "middle",
+        inGraphDataXPosition: 2,
+        inGraphDataYPosition: 2,
+        inGraphDataAnglePosition: 2,
+        inGraphDataRadiusPosition: 2,
+        inGraphDataRotate: 90,
+        inGraphDataPaddingAngle: 0,
+        inGraphDataPaddingRadius: 0,
+        inGraphDataBorders: false,
+        inGraphDataBordersXSpace: 1,
+        inGraphDataBordersYSpace: 1,
+        inGraphDataBordersWidth: 1,
+        inGraphDataBordersStyle: "solid",
+        inGraphDataBordersColor: "rgba(0,0,0,1)",
+        legend: true,
+        maxLegendCols: 5,
+        legendBlockSize: 15,
+        legendFillColor: 'rgba(255,255,255,0.00)',
+        legendColorIndicatorStrokeWidth: 1,
+        legendPosX: -2,
+        legendPosY: 4,
+        legendXPadding: 0,
+        legendYPadding: 0,
+        legendBorders: false,
+        legendBordersWidth: 1,
+        legendBordersStyle: "solid",
+        legendBordersColors: "rgba(102,102,102,1)",
+        legendBordersSpaceBefore: 5,
+        legendBordersSpaceLeft: 5,
+        legendBordersSpaceRight: 5,
+        legendBordersSpaceAfter: 5,
+        legendSpaceBeforeText: 5,
+        legendSpaceLeftText: 5,
+        legendSpaceRightText: 5,
+        legendSpaceAfterText: 5,
+        legendSpaceBetweenBoxAndText: 5,
+        legendSpaceBetweenTextHorizontal: 5,
+        legendSpaceBetweenTextVertical: 5,
+        legendFontFamily: "'Open Sans'",
+        legendFontStyle: "normal normal",
+        legendFontColor: "rgba(0,0,0,1)",
+        legendFontSize: 15,
+        showYAxisMin: false,
+        rotateLabels: "smart",
+        xAxisBottom: true,
+        yAxisLeft: true,
+        yAxisRight: false,
+        scaleFontFamily: "'Open Sans'",
+        scaleFontStyle: "normal normal",
+        scaleFontColor: "rgba(0,0,0,1)",
+        scaleFontSize: 12,
+        pointLabelFontFamily: "'Open Sans'",
+        pointLabelFontStyle: "normal normal",
+        pointLabelFontColor: "rgba(102,102,102,1)",
+        pointLabelFontSize: 12,
+        angleShowLineOut: true,
+        angleLineStyle: "solid",
+        angleLineWidth: 1,
+        angleLineColor: "rgba(0,0,0,0.1)",
+        percentageInnerCutout: 50,
+        scaleShowGridLines: true,
+        scaleGridLineStyle: "solid",
+        scaleGridLineWidth: 1,
+        scaleGridLineColor: "rgba(0,0,0,0.1)",
+        scaleXGridLinesStep: 1,
+        scaleYGridLinesStep: 3,
+        segmentShowStroke: true,
+        segmentStrokeStyle: "solid",
+        segmentStrokeWidth: 2,
+        segmentStrokeColor: "rgba(255,255,255,1.00)",
+        datasetStroke: true,
+        datasetFill: true,
+        datasetStrokeStyle: "solid",
+        datasetStrokeWidth: 2,
+        bezierCurve: true,
+        bezierCurveTension: 0.4,
+        pointDotStrokeStyle: "solid",
+        pointDotStrokeWidth: 1,
+        pointDotRadius: 3,
+        pointDot: true,
+        scaleTickSizeBottom: 5,
+        scaleTickSizeTop: 5,
+        scaleTickSizeLeft: 5,
+        scaleTickSizeRight: 5,
+        graphMin: 0,
+        barShowStroke: false,
+        barBorderRadius: 0,
+        barStrokeStyle: "solid",
+        barStrokeWidth: 1,
+        barValueSpacing: 15,
+        barDatasetSpacing: 0,
+        scaleShowLabelBackdrop: true,
+        scaleBackdropColor: 'rgba(255,255,255,0.75)',
+        scaleBackdropPaddingX: 2,
+        scaleBackdropPaddingY: 2,
+        animationEasing: 'linear',
+        animateRotate: true,
+        animateScale: false,
+        animationByDataset: false,
+        animationLeftToRight: false,
+        animationSteps: 80,
+        animation: true,
+        onAnimationComplete: function() {
+            MoreChartOptions2()
+        }
+    };
+    DrawTheChart(ChartData, ChartOptions, "chart-pembinaan", "Bar");
+</script>
+
+<script>
+    function MoreChartOptions() {}
+    var ChartData = {
+        labels: ["PRATUT", "TUT", "EKSEKUSI"],
+        datasets: [{
+            fillColor: "rgba(52,152,219,1)",
+            strokeColor: "rgba(52,152,219,0.5)",
+            pointColor: "rgba(52,152,219,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1.00)",
+            data: [<?= explode('+', $c_pidum[0]['pratut'])[0];  ?>, <?= explode('+', $c_pidum[0]['tut'])[0];  ?>, <?= explode('+', $c_pidum[0]['eks'])[0];  ?>],
+            title: "Target"
+        }, {
+            fillColor: "rgba(255,208,0,1)",
+            strokeColor: "rgba(46,204,113,1)",
+            pointColor: "rgba(46,204,113,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1.00)",
+            data: [<?= explode('+', $c_pidum[0]['pratut'])[1];  ?>, <?= explode('+', $c_pidum[0]['tut'])[1];  ?>, <?= explode('+', $c_pidum[0]['eks'])[1];  ?>],
+            title: "Realisasi"
+        }, {
+            fillColor: "rgba(255,0,0,1)",
+            strokeColor: "rgba(155,89,182,1)",
+            pointColor: "rgba(155,89,182,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1)",
+            data: [<?= explode('+', $c_pidum[0]['pratut'])[2];  ?>, <?= explode('+', $c_pidum[0]['tut'])[2];  ?>, <?= explode('+', $c_pidum[0]['eks'])[2];  ?>],
+            title: "Sisa Anggaran"
+        }, ]
+    };
+    ChartOptions = {
+        decimalSeparator: ".",
+        thousandSeparator: ",",
+        spaceLeft: 12,
+        spaceRight: 12,
+        spaceTop: 12,
+        spaceBottom: 12,
+        scaleLabel: "<%=value+''%>",
+        yAxisMinimumInterval: 1,
+        scaleShowLabels: true,
+        scaleShowLine: true,
+        scaleLineStyle: "solid",
+        scaleLineWidth: 1,
+        scaleLineColor: "rgba(0,0,0,0.6)",
+        scaleOverlay: false,
+        scaleOverride: false,
+        scaleSteps: 10,
+        scaleStepWidth: 10,
+        scaleStartValue: 0,
+        inGraphDataShow: true,
+        inGraphDataTmpl: '<%=v3%>',
+        inGraphDataFontFamily: "'Open Sans'",
+        inGraphDataFontStyle: "normal bold",
+        inGraphDataFontColor: "rgba(255,255,255,1.00)",
+        inGraphDataFontSize: 12,
+        inGraphDataPaddingX: 0,
+        inGraphDataPaddingY: -5,
+        inGraphDataAlign: "center",
+        inGraphDataVAlign: "middle",
+        inGraphDataXPosition: 2,
+        inGraphDataYPosition: 2,
+        inGraphDataAnglePosition: 2,
+        inGraphDataRadiusPosition: 2,
+        inGraphDataRotate: 90,
+        inGraphDataPaddingAngle: 0,
+        inGraphDataPaddingRadius: 0,
+        inGraphDataBorders: false,
+        inGraphDataBordersXSpace: 1,
+        inGraphDataBordersYSpace: 1,
+        inGraphDataBordersWidth: 1,
+        inGraphDataBordersStyle: "solid",
+        inGraphDataBordersColor: "rgba(0,0,0,1)",
+        legend: true,
+        maxLegendCols: 5,
+        legendBlockSize: 15,
+        legendFillColor: 'rgba(255,255,255,0.00)',
+        legendColorIndicatorStrokeWidth: 1,
+        legendPosX: -2,
+        legendPosY: 4,
+        legendXPadding: 0,
+        legendYPadding: 0,
+        legendBorders: false,
+        legendBordersWidth: 1,
+        legendBordersStyle: "solid",
+        legendBordersColors: "rgba(102,102,102,1)",
+        legendBordersSpaceBefore: 5,
+        legendBordersSpaceLeft: 5,
+        legendBordersSpaceRight: 5,
+        legendBordersSpaceAfter: 5,
+        legendSpaceBeforeText: 5,
+        legendSpaceLeftText: 5,
+        legendSpaceRightText: 5,
+        legendSpaceAfterText: 5,
+        legendSpaceBetweenBoxAndText: 5,
+        legendSpaceBetweenTextHorizontal: 5,
+        legendSpaceBetweenTextVertical: 5,
+        legendFontFamily: "'Open Sans'",
+        legendFontStyle: "normal normal",
+        legendFontColor: "rgba(0,0,0,1)",
+        legendFontSize: 15,
+        showYAxisMin: false,
+        rotateLabels: "smart",
+        xAxisBottom: true,
+        yAxisLeft: true,
+        yAxisRight: false,
+        scaleFontFamily: "'Open Sans'",
+        scaleFontStyle: "normal normal",
+        scaleFontColor: "rgba(0,0,0,1)",
+        scaleFontSize: 12,
+        pointLabelFontFamily: "'Open Sans'",
+        pointLabelFontStyle: "normal normal",
+        pointLabelFontColor: "rgba(102,102,102,1)",
+        pointLabelFontSize: 12,
+        angleShowLineOut: true,
+        angleLineStyle: "solid",
+        angleLineWidth: 1,
+        angleLineColor: "rgba(0,0,0,0.1)",
+        percentageInnerCutout: 50,
+        scaleShowGridLines: true,
+        scaleGridLineStyle: "solid",
+        scaleGridLineWidth: 1,
+        scaleGridLineColor: "rgba(0,0,0,0.1)",
+        scaleXGridLinesStep: 1,
+        scaleYGridLinesStep: 3,
+        segmentShowStroke: true,
+        segmentStrokeStyle: "solid",
+        segmentStrokeWidth: 2,
+        segmentStrokeColor: "rgba(255,255,255,1.00)",
+        datasetStroke: true,
+        datasetFill: true,
+        datasetStrokeStyle: "solid",
+        datasetStrokeWidth: 2,
+        bezierCurve: true,
+        bezierCurveTension: 0.4,
+        pointDotStrokeStyle: "solid",
+        pointDotStrokeWidth: 1,
+        pointDotRadius: 3,
+        pointDot: true,
+        scaleTickSizeBottom: 5,
+        scaleTickSizeTop: 5,
+        scaleTickSizeLeft: 5,
+        scaleTickSizeRight: 5,
+        graphMin: 0,
+        barShowStroke: false,
+        barBorderRadius: 0,
+        barStrokeStyle: "solid",
+        barStrokeWidth: 1,
+        barValueSpacing: 15,
+        barDatasetSpacing: 0,
+        scaleShowLabelBackdrop: true,
+        scaleBackdropColor: 'rgba(255,255,255,0.75)',
+        scaleBackdropPaddingX: 2,
+        scaleBackdropPaddingY: 2,
+        animationEasing: 'linear',
+        animateRotate: true,
+        animateScale: false,
+        animationByDataset: false,
+        animationLeftToRight: false,
+        animationSteps: 80,
+        animation: true,
+        onAnimationComplete: function() {
+            MoreChartOptions2()
+        }
+    };
+    DrawTheChart(ChartData, ChartOptions, "chart-pidum", "Bar");
+</script>
+
+<script>
+    function MoreChartOptions() {}
+    var ChartData = {
+        labels: ["LID", "DIK", "PRATUT DAN TUT", "EKSEKUSI"],
+        datasets: [{
+            fillColor: "rgba(52,152,219,1)",
+            strokeColor: "rgba(52,152,219,0.5)",
+            pointColor: "rgba(52,152,219,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1.00)",
+            data: [<?= explode('+', $c_pidsus[0]['lid'])[0];  ?>, <?= explode('+', $c_pidsus[0]['dik'])[0];  ?>, <?= explode('+', $c_pidsus[0]['tut'])[0];  ?>, <?= explode('+', $c_pidsus[0]['eks'])[0];  ?>],
+            title: "Target"
+        }, {
+            fillColor: "rgba(255,208,0,1)",
+            strokeColor: "rgba(46,204,113,1)",
+            pointColor: "rgba(46,204,113,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1.00)",
+            data: [<?= explode('+', $c_pidsus[0]['lid'])[1];  ?>, <?= explode('+', $c_pidsus[0]['dik'])[1];  ?>, <?= explode('+', $c_pidsus[0]['tut'])[1];  ?>, <?= explode('+', $c_pidsus[0]['eks'])[1];  ?>],
+            title: "Realisasi"
+        }, {
+            fillColor: "rgba(255,0,0,1)",
+            strokeColor: "rgba(155,89,182,1)",
+            pointColor: "rgba(155,89,182,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1)",
+            data: [<?= explode('+', $c_pidsus[0]['lid'])[2];  ?>, <?= explode('+', $c_pidsus[0]['dik'])[2];  ?>, <?= explode('+', $c_pidsus[0]['tut'])[2];  ?>, <?= explode('+', $c_pidsus[0]['eks'])[2];  ?>],
+            title: "Sisa Anggaran"
+        }, ]
+    };
+    ChartOptions = {
+        decimalSeparator: ".",
+        thousandSeparator: ",",
+        spaceLeft: 12,
+        spaceRight: 12,
+        spaceTop: 12,
+        spaceBottom: 12,
+        scaleLabel: "<%=value+''%>",
+        yAxisMinimumInterval: 1,
+        scaleShowLabels: true,
+        scaleShowLine: true,
+        scaleLineStyle: "solid",
+        scaleLineWidth: 1,
+        scaleLineColor: "rgba(0,0,0,0.6)",
+        scaleOverlay: false,
+        scaleOverride: false,
+        scaleSteps: 10,
+        scaleStepWidth: 10,
+        scaleStartValue: 0,
+        inGraphDataShow: true,
+        inGraphDataTmpl: '<%=v3%>',
+        inGraphDataFontFamily: "'Open Sans'",
+        inGraphDataFontStyle: "normal bold",
+        inGraphDataFontColor: "rgba(255,255,255,1.00)",
+        inGraphDataFontSize: 12,
+        inGraphDataPaddingX: 0,
+        inGraphDataPaddingY: -5,
+        inGraphDataAlign: "center",
+        inGraphDataVAlign: "middle",
+        inGraphDataXPosition: 2,
+        inGraphDataYPosition: 2,
+        inGraphDataAnglePosition: 2,
+        inGraphDataRadiusPosition: 2,
+        inGraphDataRotate: 90,
+        inGraphDataPaddingAngle: 0,
+        inGraphDataPaddingRadius: 0,
+        inGraphDataBorders: false,
+        inGraphDataBordersXSpace: 1,
+        inGraphDataBordersYSpace: 1,
+        inGraphDataBordersWidth: 1,
+        inGraphDataBordersStyle: "solid",
+        inGraphDataBordersColor: "rgba(0,0,0,1)",
+        legend: true,
+        maxLegendCols: 5,
+        legendBlockSize: 15,
+        legendFillColor: 'rgba(255,255,255,0.00)',
+        legendColorIndicatorStrokeWidth: 1,
+        legendPosX: -2,
+        legendPosY: 4,
+        legendXPadding: 0,
+        legendYPadding: 0,
+        legendBorders: false,
+        legendBordersWidth: 1,
+        legendBordersStyle: "solid",
+        legendBordersColors: "rgba(102,102,102,1)",
+        legendBordersSpaceBefore: 5,
+        legendBordersSpaceLeft: 5,
+        legendBordersSpaceRight: 5,
+        legendBordersSpaceAfter: 5,
+        legendSpaceBeforeText: 5,
+        legendSpaceLeftText: 5,
+        legendSpaceRightText: 5,
+        legendSpaceAfterText: 5,
+        legendSpaceBetweenBoxAndText: 5,
+        legendSpaceBetweenTextHorizontal: 5,
+        legendSpaceBetweenTextVertical: 5,
+        legendFontFamily: "'Open Sans'",
+        legendFontStyle: "normal normal",
+        legendFontColor: "rgba(0,0,0,1)",
+        legendFontSize: 15,
+        showYAxisMin: false,
+        rotateLabels: "smart",
+        xAxisBottom: true,
+        yAxisLeft: true,
+        yAxisRight: false,
+        scaleFontFamily: "'Open Sans'",
+        scaleFontStyle: "normal normal",
+        scaleFontColor: "rgba(0,0,0,1)",
+        scaleFontSize: 12,
+        pointLabelFontFamily: "'Open Sans'",
+        pointLabelFontStyle: "normal normal",
+        pointLabelFontColor: "rgba(102,102,102,1)",
+        pointLabelFontSize: 12,
+        angleShowLineOut: true,
+        angleLineStyle: "solid",
+        angleLineWidth: 1,
+        angleLineColor: "rgba(0,0,0,0.1)",
+        percentageInnerCutout: 50,
+        scaleShowGridLines: true,
+        scaleGridLineStyle: "solid",
+        scaleGridLineWidth: 1,
+        scaleGridLineColor: "rgba(0,0,0,0.1)",
+        scaleXGridLinesStep: 1,
+        scaleYGridLinesStep: 3,
+        segmentShowStroke: true,
+        segmentStrokeStyle: "solid",
+        segmentStrokeWidth: 2,
+        segmentStrokeColor: "rgba(255,255,255,1.00)",
+        datasetStroke: true,
+        datasetFill: true,
+        datasetStrokeStyle: "solid",
+        datasetStrokeWidth: 2,
+        bezierCurve: true,
+        bezierCurveTension: 0.4,
+        pointDotStrokeStyle: "solid",
+        pointDotStrokeWidth: 1,
+        pointDotRadius: 3,
+        pointDot: true,
+        scaleTickSizeBottom: 5,
+        scaleTickSizeTop: 5,
+        scaleTickSizeLeft: 5,
+        scaleTickSizeRight: 5,
+        graphMin: 0,
+        barShowStroke: false,
+        barBorderRadius: 0,
+        barStrokeStyle: "solid",
+        barStrokeWidth: 1,
+        barValueSpacing: 15,
+        barDatasetSpacing: 0,
+        scaleShowLabelBackdrop: true,
+        scaleBackdropColor: 'rgba(255,255,255,0.75)',
+        scaleBackdropPaddingX: 2,
+        scaleBackdropPaddingY: 2,
+        animationEasing: 'linear',
+        animateRotate: true,
+        animateScale: false,
+        animationByDataset: false,
+        animationLeftToRight: false,
+        animationSteps: 80,
+        animation: true,
+        onAnimationComplete: function() {
+            MoreChartOptions2()
+        }
+    };
+    DrawTheChart(ChartData, ChartOptions, "chart-pidsus", "Bar");
+</script>
+
+<script>
+    function MoreChartOptions() {}
+    var ChartData = {
+
+        labels: ["PERKARA",
+            "INFORMASI PELAYANAN",
+            "PERTIMBANGAN HUKUM"
+        ],
+        datasets: [{
+            fillColor: "rgba(52,152,219,1)",
+            strokeColor: "rgba(52,152,219,0.5)",
+            pointColor: "rgba(52,152,219,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1.00)",
+            data: [<?= explode('+', $c_datun[0]['perkara'])[0];  ?>, <?= explode('+', $c_datun[0]['info'])[0];  ?>, <?= explode('+', $c_datun[0]['hukum'])[0];  ?>],
+            title: "Target"
+        }, {
+            fillColor: "rgba(255,208,0,1)",
+            strokeColor: "rgba(46,204,113,1)",
+            pointColor: "rgba(46,204,113,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1.00)",
+            data: [<?= explode('+', $c_datun[0]['perkara'])[1];  ?>, <?= explode('+', $c_datun[0]['info'])[1];  ?>, <?= explode('+', $c_datun[0]['hukum'])[1];  ?>],
+            title: "Realisasi"
+        }, {
+            fillColor: "rgba(255,0,0,1)",
+            strokeColor: "rgba(155,89,182,1)",
+            pointColor: "rgba(155,89,182,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1)",
+            data: [<?= explode('+', $c_datun[0]['perkara'])[2];  ?>, <?= explode('+', $c_datun[0]['info'])[2];  ?>, <?= explode('+', $c_datun[0]['hukum'])[2];  ?>],
+            title: "Sisa Anggaran"
+        }, ]
+    };
+    ChartOptions = {
+        decimalSeparator: ".",
+        thousandSeparator: ",",
+        spaceLeft: 12,
+        spaceRight: 12,
+        spaceTop: 12,
+        spaceBottom: 12,
+        scaleLabel: "<%=value+''%>",
+        yAxisMinimumInterval: 1,
+        scaleShowLabels: true,
+        scaleShowLine: true,
+        scaleLineStyle: "solid",
+        scaleLineWidth: 1,
+        scaleLineColor: "rgba(0,0,0,0.6)",
+        scaleOverlay: false,
+        scaleOverride: false,
+        scaleSteps: 10,
+        scaleStepWidth: 10,
+        scaleStartValue: 0,
+        inGraphDataShow: true,
+        inGraphDataTmpl: '<%=v3%>',
+        inGraphDataFontFamily: "'Open Sans'",
+        inGraphDataFontStyle: "normal bold",
+        inGraphDataFontColor: "rgba(255,255,255,1.00)",
+        inGraphDataFontSize: 12,
+        inGraphDataPaddingX: 0,
+        inGraphDataPaddingY: -5,
+        inGraphDataAlign: "center",
+        inGraphDataVAlign: "middle",
+        inGraphDataXPosition: 2,
+        inGraphDataYPosition: 2,
+        inGraphDataAnglePosition: 2,
+        inGraphDataRadiusPosition: 2,
+        inGraphDataRotate: 90,
+        inGraphDataPaddingAngle: 0,
+        inGraphDataPaddingRadius: 0,
+        inGraphDataBorders: false,
+        inGraphDataBordersXSpace: 1,
+        inGraphDataBordersYSpace: 1,
+        inGraphDataBordersWidth: 1,
+        inGraphDataBordersStyle: "solid",
+        inGraphDataBordersColor: "rgba(0,0,0,1)",
+        legend: true,
+        maxLegendCols: 5,
+        legendBlockSize: 15,
+        legendFillColor: 'rgba(255,255,255,0.00)',
+        legendColorIndicatorStrokeWidth: 1,
+        legendPosX: -2,
+        legendPosY: 4,
+        legendXPadding: 0,
+        legendYPadding: 0,
+        legendBorders: false,
+        legendBordersWidth: 1,
+        legendBordersStyle: "solid",
+        legendBordersColors: "rgba(102,102,102,1)",
+        legendBordersSpaceBefore: 5,
+        legendBordersSpaceLeft: 5,
+        legendBordersSpaceRight: 5,
+        legendBordersSpaceAfter: 5,
+        legendSpaceBeforeText: 5,
+        legendSpaceLeftText: 5,
+        legendSpaceRightText: 5,
+        legendSpaceAfterText: 5,
+        legendSpaceBetweenBoxAndText: 5,
+        legendSpaceBetweenTextHorizontal: 5,
+        legendSpaceBetweenTextVertical: 5,
+        legendFontFamily: "'Open Sans'",
+        legendFontStyle: "normal normal",
+        legendFontColor: "rgba(0,0,0,1)",
+        legendFontSize: 15,
+        showYAxisMin: false,
+        rotateLabels: "smart",
+        xAxisBottom: true,
+        yAxisLeft: true,
+        yAxisRight: false,
+        scaleFontFamily: "'Open Sans'",
+        scaleFontStyle: "normal normal",
+        scaleFontColor: "rgba(0,0,0,1)",
+        scaleFontSize: 12,
+        pointLabelFontFamily: "'Open Sans'",
+        pointLabelFontStyle: "normal normal",
+        pointLabelFontColor: "rgba(102,102,102,1)",
+        pointLabelFontSize: 12,
+        angleShowLineOut: true,
+        angleLineStyle: "solid",
+        angleLineWidth: 1,
+        angleLineColor: "rgba(0,0,0,0.1)",
+        percentageInnerCutout: 50,
+        scaleShowGridLines: true,
+        scaleGridLineStyle: "solid",
+        scaleGridLineWidth: 1,
+        scaleGridLineColor: "rgba(0,0,0,0.1)",
+        scaleXGridLinesStep: 1,
+        scaleYGridLinesStep: 3,
+        segmentShowStroke: true,
+        segmentStrokeStyle: "solid",
+        segmentStrokeWidth: 2,
+        segmentStrokeColor: "rgba(255,255,255,1.00)",
+        datasetStroke: true,
+        datasetFill: true,
+        datasetStrokeStyle: "solid",
+        datasetStrokeWidth: 2,
+        bezierCurve: true,
+        bezierCurveTension: 0.4,
+        pointDotStrokeStyle: "solid",
+        pointDotStrokeWidth: 1,
+        pointDotRadius: 3,
+        pointDot: true,
+        scaleTickSizeBottom: 5,
+        scaleTickSizeTop: 5,
+        scaleTickSizeLeft: 5,
+        scaleTickSizeRight: 5,
+        graphMin: 0,
+        barShowStroke: false,
+        barBorderRadius: 0,
+        barStrokeStyle: "solid",
+        barStrokeWidth: 1,
+        barValueSpacing: 15,
+        barDatasetSpacing: 0,
+        scaleShowLabelBackdrop: true,
+        scaleBackdropColor: 'rgba(255,255,255,0.75)',
+        scaleBackdropPaddingX: 2,
+        scaleBackdropPaddingY: 2,
+        animationEasing: 'linear',
+        animateRotate: true,
+        animateScale: false,
+        animationByDataset: false,
+        animationLeftToRight: false,
+        animationSteps: 80,
+        animation: true,
+        onAnimationComplete: function() {
+            MoreChartOptions2()
+        }
+    };
+    DrawTheChart(ChartData, ChartOptions, "chart-datun", "Bar");
+</script>
+
+<script>
+    function MoreChartOptions() {}
+    var ChartData = {
+        labels: ["PRATUT", "TUT", "EKSEKUSI"],
+        datasets: [{
+            fillColor: "rgba(52,152,219,1)",
+            strokeColor: "rgba(52,152,219,0.5)",
+            pointColor: "rgba(52,152,219,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1.00)",
+            data: [<?= explode('+', $c_bb[0]['pratut'])[0];  ?>, <?= explode('+', $c_bb[0]['tut'])[0];  ?>, <?= explode('+', $c_bb[0]['eks'])[0];  ?>],
+            title: "Target"
+        }, {
+            fillColor: "rgba(255,208,0,1)",
+            strokeColor: "rgba(46,204,113,1)",
+            pointColor: "rgba(46,204,113,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1.00)",
+            data: [<?= explode('+', $c_bb[0]['pratut'])[1];  ?>, <?= explode('+', $c_bb[0]['tut'])[1];  ?>, <?= explode('+', $c_bb[0]['eks'])[1];  ?>],
+            title: "Realisasi"
+        }, {
+            fillColor: "rgba(255,0,0,1)",
+            strokeColor: "rgba(155,89,182,1)",
+            pointColor: "rgba(155,89,182,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1)",
+            data: [<?= explode('+', $c_bb[0]['pratut'])[2];  ?>, <?= explode('+', $c_bb[0]['tut'])[2];  ?>, <?= explode('+', $c_bb[0]['eks'])[2];  ?>],
+            title: "Sisa Anggaran"
+        }, ]
+    };
+    ChartOptions = {
+        decimalSeparator: ".",
+        thousandSeparator: ",",
+        spaceLeft: 12,
+        spaceRight: 12,
+        spaceTop: 12,
+        spaceBottom: 12,
+        scaleLabel: "<%=value+''%>",
+        yAxisMinimumInterval: 1,
+        scaleShowLabels: true,
+        scaleShowLine: true,
+        scaleLineStyle: "solid",
+        scaleLineWidth: 1,
+        scaleLineColor: "rgba(0,0,0,0.6)",
+        scaleOverlay: false,
+        scaleOverride: false,
+        scaleSteps: 10,
+        scaleStepWidth: 10,
+        scaleStartValue: 0,
+        inGraphDataShow: true,
+        inGraphDataTmpl: '<%=v3%>',
+        inGraphDataFontFamily: "'Open Sans'",
+        inGraphDataFontStyle: "normal bold",
+        inGraphDataFontColor: "rgba(255,255,255,1.00)",
+        inGraphDataFontSize: 12,
+        inGraphDataPaddingX: 0,
+        inGraphDataPaddingY: -5,
+        inGraphDataAlign: "center",
+        inGraphDataVAlign: "middle",
+        inGraphDataXPosition: 2,
+        inGraphDataYPosition: 2,
+        inGraphDataAnglePosition: 2,
+        inGraphDataRadiusPosition: 2,
+        inGraphDataRotate: 90,
+        inGraphDataPaddingAngle: 0,
+        inGraphDataPaddingRadius: 0,
+        inGraphDataBorders: false,
+        inGraphDataBordersXSpace: 1,
+        inGraphDataBordersYSpace: 1,
+        inGraphDataBordersWidth: 1,
+        inGraphDataBordersStyle: "solid",
+        inGraphDataBordersColor: "rgba(0,0,0,1)",
+        legend: true,
+        maxLegendCols: 5,
+        legendBlockSize: 15,
+        legendFillColor: 'rgba(255,255,255,0.00)',
+        legendColorIndicatorStrokeWidth: 1,
+        legendPosX: -2,
+        legendPosY: 4,
+        legendXPadding: 0,
+        legendYPadding: 0,
+        legendBorders: false,
+        legendBordersWidth: 1,
+        legendBordersStyle: "solid",
+        legendBordersColors: "rgba(102,102,102,1)",
+        legendBordersSpaceBefore: 5,
+        legendBordersSpaceLeft: 5,
+        legendBordersSpaceRight: 5,
+        legendBordersSpaceAfter: 5,
+        legendSpaceBeforeText: 5,
+        legendSpaceLeftText: 5,
+        legendSpaceRightText: 5,
+        legendSpaceAfterText: 5,
+        legendSpaceBetweenBoxAndText: 5,
+        legendSpaceBetweenTextHorizontal: 5,
+        legendSpaceBetweenTextVertical: 5,
+        legendFontFamily: "'Open Sans'",
+        legendFontStyle: "normal normal",
+        legendFontColor: "rgba(0,0,0,1)",
+        legendFontSize: 15,
+        showYAxisMin: false,
+        rotateLabels: "smart",
+        xAxisBottom: true,
+        yAxisLeft: true,
+        yAxisRight: false,
+        scaleFontFamily: "'Open Sans'",
+        scaleFontStyle: "normal normal",
+        scaleFontColor: "rgba(0,0,0,1)",
+        scaleFontSize: 12,
+        pointLabelFontFamily: "'Open Sans'",
+        pointLabelFontStyle: "normal normal",
+        pointLabelFontColor: "rgba(102,102,102,1)",
+        pointLabelFontSize: 12,
+        angleShowLineOut: true,
+        angleLineStyle: "solid",
+        angleLineWidth: 1,
+        angleLineColor: "rgba(0,0,0,0.1)",
+        percentageInnerCutout: 50,
+        scaleShowGridLines: true,
+        scaleGridLineStyle: "solid",
+        scaleGridLineWidth: 1,
+        scaleGridLineColor: "rgba(0,0,0,0.1)",
+        scaleXGridLinesStep: 1,
+        scaleYGridLinesStep: 3,
+        segmentShowStroke: true,
+        segmentStrokeStyle: "solid",
+        segmentStrokeWidth: 2,
+        segmentStrokeColor: "rgba(255,255,255,1.00)",
+        datasetStroke: true,
+        datasetFill: true,
+        datasetStrokeStyle: "solid",
+        datasetStrokeWidth: 2,
+        bezierCurve: true,
+        bezierCurveTension: 0.4,
+        pointDotStrokeStyle: "solid",
+        pointDotStrokeWidth: 1,
+        pointDotRadius: 3,
+        pointDot: true,
+        scaleTickSizeBottom: 5,
+        scaleTickSizeTop: 5,
+        scaleTickSizeLeft: 5,
+        scaleTickSizeRight: 5,
+        graphMin: 0,
+        barShowStroke: false,
+        barBorderRadius: 0,
+        barStrokeStyle: "solid",
+        barStrokeWidth: 1,
+        barValueSpacing: 15,
+        barDatasetSpacing: 0,
+        scaleShowLabelBackdrop: true,
+        scaleBackdropColor: 'rgba(255,255,255,0.75)',
+        scaleBackdropPaddingX: 2,
+        scaleBackdropPaddingY: 2,
+        animationEasing: 'linear',
+        animateRotate: true,
+        animateScale: false,
+        animationByDataset: false,
+        animationLeftToRight: false,
+        animationSteps: 80,
+        animation: true,
+        onAnimationComplete: function() {
+            MoreChartOptions2()
+        }
+    };
+    DrawTheChart(ChartData, ChartOptions, "chart-bb", "Bar");
+</script>
+
+<!-- Chart Anggaran Scripts End -->
+
+<!-- Chart Kinerja Scripts -->
+<script>
+    function MoreChartOptions() {}
+    var ChartData = {
+        labels: ["LPG",
+            "PAKEM", "PENKUM", "JMS",
+        ],
+        datasets: [{
+            fillColor: "rgba(52,152,219,1)",
+            strokeColor: "rgba(52,152,219,0.5)",
+            pointColor: "rgba(52,152,219,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1.00)",
+            data: [<?= explode('+', $k_intel[0]['lpg'])[0];  ?>, <?= explode('+', $k_intel[0]['pakem'])[0];  ?>, <?= explode('+', $k_intel[0]['penkum'])[0];  ?>, <?= explode('+', $k_intel[0]['jms'])[0];  ?>],
+            title: "Target"
+        }, {
+            fillColor: "rgba(255,208,0,1)",
+            strokeColor: "rgba(46,204,113,1)",
+            pointColor: "rgba(46,204,113,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1.00)",
+            data: [<?= explode('+', $k_intel[0]['lpg'])[1];  ?>, <?= explode('+', $k_intel[0]['pakem'])[1];  ?>, <?= explode('+', $k_intel[0]['penkum'])[1];  ?>, <?= explode('+', $k_intel[0]['jms'])[1];  ?>],
+            title: "Realisasi"
+        }, {
+            fillColor: "rgba(255,0,0,1)",
+            strokeColor: "rgba(155,89,182,1)",
+            pointColor: "rgba(155,89,182,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1)",
+            data: [<?= explode('+', $k_intel[0]['lpg'])[2];  ?>, <?= explode('+', $k_intel[0]['pakem'])[2];  ?>, <?= explode('+', $k_intel[0]['penkum'])[2];  ?>, <?= explode('+', $k_intel[0]['jms'])[2];  ?>],
+            title: "Sisa Anggaran"
+        }, ]
+    };
+    ChartOptions = {
+        decimalSeparator: ".",
+        thousandSeparator: ",",
+        spaceLeft: 12,
+        spaceRight: 12,
+        spaceTop: 12,
+        spaceBottom: 12,
+        scaleLabel: "<%=value+''%>",
+        yAxisMinimumInterval: 1,
+        scaleShowLabels: true,
+        scaleShowLine: true,
+        scaleLineStyle: "solid",
+        scaleLineWidth: 1,
+        scaleLineColor: "rgba(0,0,0,0.6)",
+        scaleOverlay: false,
+        scaleOverride: false,
+        scaleSteps: 10,
+        scaleStepWidth: 10,
+        scaleStartValue: 0,
+        inGraphDataShow: true,
+        inGraphDataTmpl: '<%=v3%>',
+        inGraphDataFontFamily: "'Open Sans'",
+        inGraphDataFontStyle: "normal bold",
+        inGraphDataFontColor: "rgba(255,255,255,1.00)",
+        inGraphDataFontSize: 12,
+        inGraphDataPaddingX: 0,
+        inGraphDataPaddingY: -5,
+        inGraphDataAlign: "center",
+        inGraphDataVAlign: "middle",
+        inGraphDataXPosition: 2,
+        inGraphDataYPosition: 2,
+        inGraphDataAnglePosition: 2,
+        inGraphDataRadiusPosition: 2,
+        inGraphDataRotate: 90,
+        inGraphDataPaddingAngle: 0,
+        inGraphDataPaddingRadius: 0,
+        inGraphDataBorders: false,
+        inGraphDataBordersXSpace: 1,
+        inGraphDataBordersYSpace: 1,
+        inGraphDataBordersWidth: 1,
+        inGraphDataBordersStyle: "solid",
+        inGraphDataBordersColor: "rgba(0,0,0,1)",
+        legend: true,
+        maxLegendCols: 5,
+        legendBlockSize: 15,
+        legendFillColor: 'rgba(255,255,255,0.00)',
+        legendColorIndicatorStrokeWidth: 1,
+        legendPosX: -2,
+        legendPosY: 4,
+        legendXPadding: 0,
+        legendYPadding: 0,
+        legendBorders: false,
+        legendBordersWidth: 1,
+        legendBordersStyle: "solid",
+        legendBordersColors: "rgba(102,102,102,1)",
+        legendBordersSpaceBefore: 5,
+        legendBordersSpaceLeft: 5,
+        legendBordersSpaceRight: 5,
+        legendBordersSpaceAfter: 5,
+        legendSpaceBeforeText: 5,
+        legendSpaceLeftText: 5,
+        legendSpaceRightText: 5,
+        legendSpaceAfterText: 5,
+        legendSpaceBetweenBoxAndText: 5,
+        legendSpaceBetweenTextHorizontal: 5,
+        legendSpaceBetweenTextVertical: 5,
+        legendFontFamily: "'Open Sans'",
+        legendFontStyle: "normal normal",
+        legendFontColor: "rgba(0,0,0,1)",
+        legendFontSize: 15,
+        showYAxisMin: false,
+        rotateLabels: "smart",
+        xAxisBottom: true,
+        yAxisLeft: true,
+        yAxisRight: false,
+        scaleFontFamily: "'Open Sans'",
+        scaleFontStyle: "normal normal",
+        scaleFontColor: "rgba(0,0,0,1)",
+        scaleFontSize: 12,
+        pointLabelFontFamily: "'Open Sans'",
+        pointLabelFontStyle: "normal normal",
+        pointLabelFontColor: "rgba(102,102,102,1)",
+        pointLabelFontSize: 12,
+        angleShowLineOut: true,
+        angleLineStyle: "solid",
+        angleLineWidth: 1,
+        angleLineColor: "rgba(0,0,0,0.1)",
+        percentageInnerCutout: 50,
+        scaleShowGridLines: true,
+        scaleGridLineStyle: "solid",
+        scaleGridLineWidth: 1,
+        scaleGridLineColor: "rgba(0,0,0,0.1)",
+        scaleXGridLinesStep: 1,
+        scaleYGridLinesStep: 3,
+        segmentShowStroke: true,
+        segmentStrokeStyle: "solid",
+        segmentStrokeWidth: 2,
+        segmentStrokeColor: "rgba(255,255,255,1.00)",
+        datasetStroke: true,
+        datasetFill: true,
+        datasetStrokeStyle: "solid",
+        datasetStrokeWidth: 2,
+        bezierCurve: true,
+        bezierCurveTension: 0.4,
+        pointDotStrokeStyle: "solid",
+        pointDotStrokeWidth: 1,
+        pointDotRadius: 3,
+        pointDot: true,
+        scaleTickSizeBottom: 5,
+        scaleTickSizeTop: 5,
+        scaleTickSizeLeft: 5,
+        scaleTickSizeRight: 5,
+        graphMin: 0,
+        barShowStroke: false,
+        barBorderRadius: 0,
+        barStrokeStyle: "solid",
+        barStrokeWidth: 1,
+        barValueSpacing: 15,
+        barDatasetSpacing: 0,
+        scaleShowLabelBackdrop: true,
+        scaleBackdropColor: 'rgba(255,255,255,0.75)',
+        scaleBackdropPaddingX: 2,
+        scaleBackdropPaddingY: 2,
+        animationEasing: 'linear',
+        animateRotate: true,
+        animateScale: false,
+        animationByDataset: false,
+        animationLeftToRight: false,
+        animationSteps: 80,
+        animation: true,
+        onAnimationComplete: function() {
+            MoreChartOptions2()
+        }
+    };
+    DrawTheChart(ChartData, ChartOptions, "k-intel", "Bar");
+</script>
+
+<script>
+    function MoreChartOptions() {}
+    var ChartData = {
+        labels: ["Belanja Pegawai", "Belanja Barang", "Gedung BB"],
+        datasets: [{
+            fillColor: "rgba(52,152,219,1)",
+            strokeColor: "rgba(52,152,219,0.5)",
+            pointColor: "rgba(52,152,219,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1.00)",
+            data: [<?= explode('+', $k_pembinaan[0]['pegawai'])[0];  ?>, <?= explode('+', $k_pembinaan[0]['barang'])[0];  ?>, <?= explode('+', $k_pembinaan[0]['pembangunan'])[0];  ?>, ],
+            title: "Target"
+        }, {
+            fillColor: "rgba(255,208,0,1)",
+            strokeColor: "rgba(46,204,113,1)",
+            pointColor: "rgba(46,204,113,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1.00)",
+            data: [<?= explode('+', $k_pembinaan[0]['pegawai'])[1];  ?>, <?= explode('+', $k_pembinaan[0]['barang'])[1];  ?>, <?= explode('+', $k_pembinaan[0]['pembangunan'])[1];  ?>, ],
+            title: "Realisasi"
+        }, {
+            fillColor: "rgba(255,0,0,1)",
+            strokeColor: "rgba(155,89,182,1)",
+            pointColor: "rgba(155,89,182,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1)",
+            data: [<?= explode('+', $k_pembinaan[0]['pegawai'])[2];  ?>, <?= explode('+', $k_pembinaan[0]['barang'])[2];  ?>, <?= explode('+', $k_pembinaan[0]['pembangunan'])[2];  ?>, ],
+            title: "Sisa Anggaran"
+        }, ]
+    };
+    ChartOptions = {
+        decimalSeparator: ".",
+        thousandSeparator: ",",
+        spaceLeft: 12,
+        spaceRight: 12,
+        spaceTop: 12,
+        spaceBottom: 12,
+        scaleLabel: "<%=value+''%>",
+        yAxisMinimumInterval: 1,
+        scaleShowLabels: true,
+        scaleShowLine: true,
+        scaleLineStyle: "solid",
+        scaleLineWidth: 1,
+        scaleLineColor: "rgba(0,0,0,0.6)",
+        scaleOverlay: false,
+        scaleOverride: false,
+        scaleSteps: 10,
+        scaleStepWidth: 10,
+        scaleStartValue: 0,
+        inGraphDataShow: true,
+        inGraphDataTmpl: '<%=v3%>',
+        inGraphDataFontFamily: "'Open Sans'",
+        inGraphDataFontStyle: "normal bold",
+        inGraphDataFontColor: "rgba(255,255,255,1.00)",
+        inGraphDataFontSize: 12,
+        inGraphDataPaddingX: 0,
+        inGraphDataPaddingY: -5,
+        inGraphDataAlign: "center",
+        inGraphDataVAlign: "middle",
+        inGraphDataXPosition: 2,
+        inGraphDataYPosition: 2,
+        inGraphDataAnglePosition: 2,
+        inGraphDataRadiusPosition: 2,
+        inGraphDataRotate: 90,
+        inGraphDataPaddingAngle: 0,
+        inGraphDataPaddingRadius: 0,
+        inGraphDataBorders: false,
+        inGraphDataBordersXSpace: 1,
+        inGraphDataBordersYSpace: 1,
+        inGraphDataBordersWidth: 1,
+        inGraphDataBordersStyle: "solid",
+        inGraphDataBordersColor: "rgba(0,0,0,1)",
+        legend: true,
+        maxLegendCols: 5,
+        legendBlockSize: 15,
+        legendFillColor: 'rgba(255,255,255,0.00)',
+        legendColorIndicatorStrokeWidth: 1,
+        legendPosX: -2,
+        legendPosY: 4,
+        legendXPadding: 0,
+        legendYPadding: 0,
+        legendBorders: false,
+        legendBordersWidth: 1,
+        legendBordersStyle: "solid",
+        legendBordersColors: "rgba(102,102,102,1)",
+        legendBordersSpaceBefore: 5,
+        legendBordersSpaceLeft: 5,
+        legendBordersSpaceRight: 5,
+        legendBordersSpaceAfter: 5,
+        legendSpaceBeforeText: 5,
+        legendSpaceLeftText: 5,
+        legendSpaceRightText: 5,
+        legendSpaceAfterText: 5,
+        legendSpaceBetweenBoxAndText: 5,
+        legendSpaceBetweenTextHorizontal: 5,
+        legendSpaceBetweenTextVertical: 5,
+        legendFontFamily: "'Open Sans'",
+        legendFontStyle: "normal normal",
+        legendFontColor: "rgba(0,0,0,1)",
+        legendFontSize: 15,
+        showYAxisMin: false,
+        rotateLabels: "smart",
+        xAxisBottom: true,
+        yAxisLeft: true,
+        yAxisRight: false,
+        scaleFontFamily: "'Open Sans'",
+        scaleFontStyle: "normal normal",
+        scaleFontColor: "rgba(0,0,0,1)",
+        scaleFontSize: 12,
+        pointLabelFontFamily: "'Open Sans'",
+        pointLabelFontStyle: "normal normal",
+        pointLabelFontColor: "rgba(102,102,102,1)",
+        pointLabelFontSize: 12,
+        angleShowLineOut: true,
+        angleLineStyle: "solid",
+        angleLineWidth: 1,
+        angleLineColor: "rgba(0,0,0,0.1)",
+        percentageInnerCutout: 50,
+        scaleShowGridLines: true,
+        scaleGridLineStyle: "solid",
+        scaleGridLineWidth: 1,
+        scaleGridLineColor: "rgba(0,0,0,0.1)",
+        scaleXGridLinesStep: 1,
+        scaleYGridLinesStep: 3,
+        segmentShowStroke: true,
+        segmentStrokeStyle: "solid",
+        segmentStrokeWidth: 2,
+        segmentStrokeColor: "rgba(255,255,255,1.00)",
+        datasetStroke: true,
+        datasetFill: true,
+        datasetStrokeStyle: "solid",
+        datasetStrokeWidth: 2,
+        bezierCurve: true,
+        bezierCurveTension: 0.4,
+        pointDotStrokeStyle: "solid",
+        pointDotStrokeWidth: 1,
+        pointDotRadius: 3,
+        pointDot: true,
+        scaleTickSizeBottom: 5,
+        scaleTickSizeTop: 5,
+        scaleTickSizeLeft: 5,
+        scaleTickSizeRight: 5,
+        graphMin: 0,
+        barShowStroke: false,
+        barBorderRadius: 0,
+        barStrokeStyle: "solid",
+        barStrokeWidth: 1,
+        barValueSpacing: 15,
+        barDatasetSpacing: 0,
+        scaleShowLabelBackdrop: true,
+        scaleBackdropColor: 'rgba(255,255,255,0.75)',
+        scaleBackdropPaddingX: 2,
+        scaleBackdropPaddingY: 2,
+        animationEasing: 'linear',
+        animateRotate: true,
+        animateScale: false,
+        animationByDataset: false,
+        animationLeftToRight: false,
+        animationSteps: 80,
+        animation: true,
+        onAnimationComplete: function() {
+            MoreChartOptions2()
+        }
+    };
+    DrawTheChart(ChartData, ChartOptions, "k-pembinaan", "Bar");
+</script>
+
+<script>
+    function MoreChartOptions() {}
+    var ChartData = {
+        labels: ["PRATUT", "TUT", "EKSEKUSI"],
+        datasets: [{
+            fillColor: "rgba(52,152,219,1)",
+            strokeColor: "rgba(52,152,219,0.5)",
+            pointColor: "rgba(52,152,219,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1.00)",
+            data: [<?= explode('+', $k_pidum[0]['pratut'])[0];  ?>, <?= explode('+', $k_pidum[0]['tut'])[0];  ?>, <?= explode('+', $k_pidum[0]['eks'])[0];  ?>],
+            title: "Target"
+        }, {
+            fillColor: "rgba(255,208,0,1)",
+            strokeColor: "rgba(46,204,113,1)",
+            pointColor: "rgba(46,204,113,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1.00)",
+            data: [<?= explode('+', $k_pidum[0]['pratut'])[1];  ?>, <?= explode('+', $k_pidum[0]['tut'])[1];  ?>, <?= explode('+', $k_pidum[0]['eks'])[1];  ?>],
+            title: "Realisasi"
+        }, {
+            fillColor: "rgba(255,0,0,1)",
+            strokeColor: "rgba(155,89,182,1)",
+            pointColor: "rgba(155,89,182,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1)",
+            data: [<?= explode('+', $k_pidum[0]['pratut'])[2];  ?>, <?= explode('+', $k_pidum[0]['tut'])[2];  ?>, <?= explode('+', $k_pidum[0]['eks'])[2];  ?>],
+            title: "Sisa Anggaran"
+        }, ]
+    };
+    ChartOptions = {
+        decimalSeparator: ".",
+        thousandSeparator: ",",
+        spaceLeft: 12,
+        spaceRight: 12,
+        spaceTop: 12,
+        spaceBottom: 12,
+        scaleLabel: "<%=value+''%>",
+        yAxisMinimumInterval: 1,
+        scaleShowLabels: true,
+        scaleShowLine: true,
+        scaleLineStyle: "solid",
+        scaleLineWidth: 1,
+        scaleLineColor: "rgba(0,0,0,0.6)",
+        scaleOverlay: false,
+        scaleOverride: false,
+        scaleSteps: 10,
+        scaleStepWidth: 10,
+        scaleStartValue: 0,
+        inGraphDataShow: true,
+        inGraphDataTmpl: '<%=v3%>',
+        inGraphDataFontFamily: "'Open Sans'",
+        inGraphDataFontStyle: "normal bold",
+        inGraphDataFontColor: "rgba(255,255,255,1.00)",
+        inGraphDataFontSize: 12,
+        inGraphDataPaddingX: 0,
+        inGraphDataPaddingY: -5,
+        inGraphDataAlign: "center",
+        inGraphDataVAlign: "middle",
+        inGraphDataXPosition: 2,
+        inGraphDataYPosition: 2,
+        inGraphDataAnglePosition: 2,
+        inGraphDataRadiusPosition: 2,
+        inGraphDataRotate: 90,
+        inGraphDataPaddingAngle: 0,
+        inGraphDataPaddingRadius: 0,
+        inGraphDataBorders: false,
+        inGraphDataBordersXSpace: 1,
+        inGraphDataBordersYSpace: 1,
+        inGraphDataBordersWidth: 1,
+        inGraphDataBordersStyle: "solid",
+        inGraphDataBordersColor: "rgba(0,0,0,1)",
+        legend: true,
+        maxLegendCols: 5,
+        legendBlockSize: 15,
+        legendFillColor: 'rgba(255,255,255,0.00)',
+        legendColorIndicatorStrokeWidth: 1,
+        legendPosX: -2,
+        legendPosY: 4,
+        legendXPadding: 0,
+        legendYPadding: 0,
+        legendBorders: false,
+        legendBordersWidth: 1,
+        legendBordersStyle: "solid",
+        legendBordersColors: "rgba(102,102,102,1)",
+        legendBordersSpaceBefore: 5,
+        legendBordersSpaceLeft: 5,
+        legendBordersSpaceRight: 5,
+        legendBordersSpaceAfter: 5,
+        legendSpaceBeforeText: 5,
+        legendSpaceLeftText: 5,
+        legendSpaceRightText: 5,
+        legendSpaceAfterText: 5,
+        legendSpaceBetweenBoxAndText: 5,
+        legendSpaceBetweenTextHorizontal: 5,
+        legendSpaceBetweenTextVertical: 5,
+        legendFontFamily: "'Open Sans'",
+        legendFontStyle: "normal normal",
+        legendFontColor: "rgba(0,0,0,1)",
+        legendFontSize: 15,
+        showYAxisMin: false,
+        rotateLabels: "smart",
+        xAxisBottom: true,
+        yAxisLeft: true,
+        yAxisRight: false,
+        scaleFontFamily: "'Open Sans'",
+        scaleFontStyle: "normal normal",
+        scaleFontColor: "rgba(0,0,0,1)",
+        scaleFontSize: 12,
+        pointLabelFontFamily: "'Open Sans'",
+        pointLabelFontStyle: "normal normal",
+        pointLabelFontColor: "rgba(102,102,102,1)",
+        pointLabelFontSize: 12,
+        angleShowLineOut: true,
+        angleLineStyle: "solid",
+        angleLineWidth: 1,
+        angleLineColor: "rgba(0,0,0,0.1)",
+        percentageInnerCutout: 50,
+        scaleShowGridLines: true,
+        scaleGridLineStyle: "solid",
+        scaleGridLineWidth: 1,
+        scaleGridLineColor: "rgba(0,0,0,0.1)",
+        scaleXGridLinesStep: 1,
+        scaleYGridLinesStep: 3,
+        segmentShowStroke: true,
+        segmentStrokeStyle: "solid",
+        segmentStrokeWidth: 2,
+        segmentStrokeColor: "rgba(255,255,255,1.00)",
+        datasetStroke: true,
+        datasetFill: true,
+        datasetStrokeStyle: "solid",
+        datasetStrokeWidth: 2,
+        bezierCurve: true,
+        bezierCurveTension: 0.4,
+        pointDotStrokeStyle: "solid",
+        pointDotStrokeWidth: 1,
+        pointDotRadius: 3,
+        pointDot: true,
+        scaleTickSizeBottom: 5,
+        scaleTickSizeTop: 5,
+        scaleTickSizeLeft: 5,
+        scaleTickSizeRight: 5,
+        graphMin: 0,
+        barShowStroke: false,
+        barBorderRadius: 0,
+        barStrokeStyle: "solid",
+        barStrokeWidth: 1,
+        barValueSpacing: 15,
+        barDatasetSpacing: 0,
+        scaleShowLabelBackdrop: true,
+        scaleBackdropColor: 'rgba(255,255,255,0.75)',
+        scaleBackdropPaddingX: 2,
+        scaleBackdropPaddingY: 2,
+        animationEasing: 'linear',
+        animateRotate: true,
+        animateScale: false,
+        animationByDataset: false,
+        animationLeftToRight: false,
+        animationSteps: 80,
+        animation: true,
+        onAnimationComplete: function() {
+            MoreChartOptions2()
+        }
+    };
+    DrawTheChart(ChartData, ChartOptions, "k-pidum", "Bar");
+</script>
+
+<script>
+    function MoreChartOptions() {}
+    var ChartData = {
+        labels: ["LID", "DIK", "PRATUT DAN TUT", "EKSEKUSI"],
+        datasets: [{
+            fillColor: "rgba(52,152,219,1)",
+            strokeColor: "rgba(52,152,219,0.5)",
+            pointColor: "rgba(52,152,219,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1.00)",
+            data: [<?= explode('+', $k_pidsus[0]['lid'])[0];  ?>, <?= explode('+', $k_pidsus[0]['dik'])[0];  ?>, <?= explode('+', $k_pidsus[0]['tut'])[0];  ?>, <?= explode('+', $k_pidsus[0]['eks'])[0];  ?>],
+            title: "Target"
+        }, {
+            fillColor: "rgba(255,208,0,1)",
+            strokeColor: "rgba(46,204,113,1)",
+            pointColor: "rgba(46,204,113,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1.00)",
+            data: [<?= explode('+', $k_pidsus[0]['lid'])[1];  ?>, <?= explode('+', $k_pidsus[0]['dik'])[1];  ?>, <?= explode('+', $k_pidsus[0]['tut'])[1];  ?>, <?= explode('+', $k_pidsus[0]['eks'])[1];  ?>],
+            title: "Realisasi"
+        }, {
+            fillColor: "rgba(255,0,0,1)",
+            strokeColor: "rgba(155,89,182,1)",
+            pointColor: "rgba(155,89,182,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1)",
+            data: [<?= explode('+', $k_pidsus[0]['lid'])[2];  ?>, <?= explode('+', $k_pidsus[0]['dik'])[2];  ?>, <?= explode('+', $k_pidsus[0]['tut'])[2];  ?>, <?= explode('+', $k_pidsus[0]['eks'])[2];  ?>],
+            title: "Sisa Anggaran"
+        }, ]
+    };
+    ChartOptions = {
+        decimalSeparator: ".",
+        thousandSeparator: ",",
+        spaceLeft: 12,
+        spaceRight: 12,
+        spaceTop: 12,
+        spaceBottom: 12,
+        scaleLabel: "<%=value+''%>",
+        yAxisMinimumInterval: 1,
+        scaleShowLabels: true,
+        scaleShowLine: true,
+        scaleLineStyle: "solid",
+        scaleLineWidth: 1,
+        scaleLineColor: "rgba(0,0,0,0.6)",
+        scaleOverlay: false,
+        scaleOverride: false,
+        scaleSteps: 10,
+        scaleStepWidth: 10,
+        scaleStartValue: 0,
+        inGraphDataShow: true,
+        inGraphDataTmpl: '<%=v3%>',
+        inGraphDataFontFamily: "'Open Sans'",
+        inGraphDataFontStyle: "normal bold",
+        inGraphDataFontColor: "rgba(255,255,255,1.00)",
+        inGraphDataFontSize: 12,
+        inGraphDataPaddingX: 0,
+        inGraphDataPaddingY: -5,
+        inGraphDataAlign: "center",
+        inGraphDataVAlign: "middle",
+        inGraphDataXPosition: 2,
+        inGraphDataYPosition: 2,
+        inGraphDataAnglePosition: 2,
+        inGraphDataRadiusPosition: 2,
+        inGraphDataRotate: 90,
+        inGraphDataPaddingAngle: 0,
+        inGraphDataPaddingRadius: 0,
+        inGraphDataBorders: false,
+        inGraphDataBordersXSpace: 1,
+        inGraphDataBordersYSpace: 1,
+        inGraphDataBordersWidth: 1,
+        inGraphDataBordersStyle: "solid",
+        inGraphDataBordersColor: "rgba(0,0,0,1)",
+        legend: true,
+        maxLegendCols: 5,
+        legendBlockSize: 15,
+        legendFillColor: 'rgba(255,255,255,0.00)',
+        legendColorIndicatorStrokeWidth: 1,
+        legendPosX: -2,
+        legendPosY: 4,
+        legendXPadding: 0,
+        legendYPadding: 0,
+        legendBorders: false,
+        legendBordersWidth: 1,
+        legendBordersStyle: "solid",
+        legendBordersColors: "rgba(102,102,102,1)",
+        legendBordersSpaceBefore: 5,
+        legendBordersSpaceLeft: 5,
+        legendBordersSpaceRight: 5,
+        legendBordersSpaceAfter: 5,
+        legendSpaceBeforeText: 5,
+        legendSpaceLeftText: 5,
+        legendSpaceRightText: 5,
+        legendSpaceAfterText: 5,
+        legendSpaceBetweenBoxAndText: 5,
+        legendSpaceBetweenTextHorizontal: 5,
+        legendSpaceBetweenTextVertical: 5,
+        legendFontFamily: "'Open Sans'",
+        legendFontStyle: "normal normal",
+        legendFontColor: "rgba(0,0,0,1)",
+        legendFontSize: 15,
+        showYAxisMin: false,
+        rotateLabels: "smart",
+        xAxisBottom: true,
+        yAxisLeft: true,
+        yAxisRight: false,
+        scaleFontFamily: "'Open Sans'",
+        scaleFontStyle: "normal normal",
+        scaleFontColor: "rgba(0,0,0,1)",
+        scaleFontSize: 12,
+        pointLabelFontFamily: "'Open Sans'",
+        pointLabelFontStyle: "normal normal",
+        pointLabelFontColor: "rgba(102,102,102,1)",
+        pointLabelFontSize: 12,
+        angleShowLineOut: true,
+        angleLineStyle: "solid",
+        angleLineWidth: 1,
+        angleLineColor: "rgba(0,0,0,0.1)",
+        percentageInnerCutout: 50,
+        scaleShowGridLines: true,
+        scaleGridLineStyle: "solid",
+        scaleGridLineWidth: 1,
+        scaleGridLineColor: "rgba(0,0,0,0.1)",
+        scaleXGridLinesStep: 1,
+        scaleYGridLinesStep: 3,
+        segmentShowStroke: true,
+        segmentStrokeStyle: "solid",
+        segmentStrokeWidth: 2,
+        segmentStrokeColor: "rgba(255,255,255,1.00)",
+        datasetStroke: true,
+        datasetFill: true,
+        datasetStrokeStyle: "solid",
+        datasetStrokeWidth: 2,
+        bezierCurve: true,
+        bezierCurveTension: 0.4,
+        pointDotStrokeStyle: "solid",
+        pointDotStrokeWidth: 1,
+        pointDotRadius: 3,
+        pointDot: true,
+        scaleTickSizeBottom: 5,
+        scaleTickSizeTop: 5,
+        scaleTickSizeLeft: 5,
+        scaleTickSizeRight: 5,
+        graphMin: 0,
+        barShowStroke: false,
+        barBorderRadius: 0,
+        barStrokeStyle: "solid",
+        barStrokeWidth: 1,
+        barValueSpacing: 15,
+        barDatasetSpacing: 0,
+        scaleShowLabelBackdrop: true,
+        scaleBackdropColor: 'rgba(255,255,255,0.75)',
+        scaleBackdropPaddingX: 2,
+        scaleBackdropPaddingY: 2,
+        animationEasing: 'linear',
+        animateRotate: true,
+        animateScale: false,
+        animationByDataset: false,
+        animationLeftToRight: false,
+        animationSteps: 80,
+        animation: true,
+        onAnimationComplete: function() {
+            MoreChartOptions2()
+        }
+    };
+    DrawTheChart(ChartData, ChartOptions, "k-pidsus", "Bar");
+</script>
+
+<script>
+    function MoreChartOptions() {}
+    var ChartData = {
+
+        labels: ["PERKARA",
+            "INFORMASI PELAYANAN",
+            "PERTIMBANGAN HUKUM"
+        ],
+        datasets: [{
+            fillColor: "rgba(52,152,219,1)",
+            strokeColor: "rgba(52,152,219,0.5)",
+            pointColor: "rgba(52,152,219,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1.00)",
+            data: [<?= explode('+', $k_datun[0]['perkara'])[0];  ?>, <?= explode('+', $k_datun[0]['info'])[0];  ?>, <?= explode('+', $k_datun[0]['hukum'])[0];  ?>],
+            title: "Target"
+        }, {
+            fillColor: "rgba(255,208,0,1)",
+            strokeColor: "rgba(46,204,113,1)",
+            pointColor: "rgba(46,204,113,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1.00)",
+            data: [<?= explode('+', $k_datun[0]['perkara'])[1];  ?>, <?= explode('+', $k_datun[0]['info'])[1];  ?>, <?= explode('+', $k_datun[0]['hukum'])[1];  ?>],
+            title: "Realisasi"
+        }, {
+            fillColor: "rgba(255,0,0,1)",
+            strokeColor: "rgba(155,89,182,1)",
+            pointColor: "rgba(155,89,182,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1)",
+            data: [<?= explode('+', $k_datun[0]['perkara'])[2];  ?>, <?= explode('+', $k_datun[0]['info'])[2];  ?>, <?= explode('+', $k_datun[0]['hukum'])[2];  ?>],
+            title: "Sisa Anggaran"
+        }, ]
+    };
+    ChartOptions = {
+        decimalSeparator: ".",
+        thousandSeparator: ",",
+        spaceLeft: 12,
+        spaceRight: 12,
+        spaceTop: 12,
+        spaceBottom: 12,
+        scaleLabel: "<%=value+''%>",
+        yAxisMinimumInterval: 1,
+        scaleShowLabels: true,
+        scaleShowLine: true,
+        scaleLineStyle: "solid",
+        scaleLineWidth: 1,
+        scaleLineColor: "rgba(0,0,0,0.6)",
+        scaleOverlay: false,
+        scaleOverride: false,
+        scaleSteps: 10,
+        scaleStepWidth: 10,
+        scaleStartValue: 0,
+        inGraphDataShow: true,
+        inGraphDataTmpl: '<%=v3%>',
+        inGraphDataFontFamily: "'Open Sans'",
+        inGraphDataFontStyle: "normal bold",
+        inGraphDataFontColor: "rgba(255,255,255,1.00)",
+        inGraphDataFontSize: 12,
+        inGraphDataPaddingX: 0,
+        inGraphDataPaddingY: -5,
+        inGraphDataAlign: "center",
+        inGraphDataVAlign: "middle",
+        inGraphDataXPosition: 2,
+        inGraphDataYPosition: 2,
+        inGraphDataAnglePosition: 2,
+        inGraphDataRadiusPosition: 2,
+        inGraphDataRotate: 90,
+        inGraphDataPaddingAngle: 0,
+        inGraphDataPaddingRadius: 0,
+        inGraphDataBorders: false,
+        inGraphDataBordersXSpace: 1,
+        inGraphDataBordersYSpace: 1,
+        inGraphDataBordersWidth: 1,
+        inGraphDataBordersStyle: "solid",
+        inGraphDataBordersColor: "rgba(0,0,0,1)",
+        legend: true,
+        maxLegendCols: 5,
+        legendBlockSize: 15,
+        legendFillColor: 'rgba(255,255,255,0.00)',
+        legendColorIndicatorStrokeWidth: 1,
+        legendPosX: -2,
+        legendPosY: 4,
+        legendXPadding: 0,
+        legendYPadding: 0,
+        legendBorders: false,
+        legendBordersWidth: 1,
+        legendBordersStyle: "solid",
+        legendBordersColors: "rgba(102,102,102,1)",
+        legendBordersSpaceBefore: 5,
+        legendBordersSpaceLeft: 5,
+        legendBordersSpaceRight: 5,
+        legendBordersSpaceAfter: 5,
+        legendSpaceBeforeText: 5,
+        legendSpaceLeftText: 5,
+        legendSpaceRightText: 5,
+        legendSpaceAfterText: 5,
+        legendSpaceBetweenBoxAndText: 5,
+        legendSpaceBetweenTextHorizontal: 5,
+        legendSpaceBetweenTextVertical: 5,
+        legendFontFamily: "'Open Sans'",
+        legendFontStyle: "normal normal",
+        legendFontColor: "rgba(0,0,0,1)",
+        legendFontSize: 15,
+        showYAxisMin: false,
+        rotateLabels: "smart",
+        xAxisBottom: true,
+        yAxisLeft: true,
+        yAxisRight: false,
+        scaleFontFamily: "'Open Sans'",
+        scaleFontStyle: "normal normal",
+        scaleFontColor: "rgba(0,0,0,1)",
+        scaleFontSize: 12,
+        pointLabelFontFamily: "'Open Sans'",
+        pointLabelFontStyle: "normal normal",
+        pointLabelFontColor: "rgba(102,102,102,1)",
+        pointLabelFontSize: 12,
+        angleShowLineOut: true,
+        angleLineStyle: "solid",
+        angleLineWidth: 1,
+        angleLineColor: "rgba(0,0,0,0.1)",
+        percentageInnerCutout: 50,
+        scaleShowGridLines: true,
+        scaleGridLineStyle: "solid",
+        scaleGridLineWidth: 1,
+        scaleGridLineColor: "rgba(0,0,0,0.1)",
+        scaleXGridLinesStep: 1,
+        scaleYGridLinesStep: 3,
+        segmentShowStroke: true,
+        segmentStrokeStyle: "solid",
+        segmentStrokeWidth: 2,
+        segmentStrokeColor: "rgba(255,255,255,1.00)",
+        datasetStroke: true,
+        datasetFill: true,
+        datasetStrokeStyle: "solid",
+        datasetStrokeWidth: 2,
+        bezierCurve: true,
+        bezierCurveTension: 0.4,
+        pointDotStrokeStyle: "solid",
+        pointDotStrokeWidth: 1,
+        pointDotRadius: 3,
+        pointDot: true,
+        scaleTickSizeBottom: 5,
+        scaleTickSizeTop: 5,
+        scaleTickSizeLeft: 5,
+        scaleTickSizeRight: 5,
+        graphMin: 0,
+        barShowStroke: false,
+        barBorderRadius: 0,
+        barStrokeStyle: "solid",
+        barStrokeWidth: 1,
+        barValueSpacing: 15,
+        barDatasetSpacing: 0,
+        scaleShowLabelBackdrop: true,
+        scaleBackdropColor: 'rgba(255,255,255,0.75)',
+        scaleBackdropPaddingX: 2,
+        scaleBackdropPaddingY: 2,
+        animationEasing: 'linear',
+        animateRotate: true,
+        animateScale: false,
+        animationByDataset: false,
+        animationLeftToRight: false,
+        animationSteps: 80,
+        animation: true,
+        onAnimationComplete: function() {
+            MoreChartOptions2()
+        }
+    };
+    DrawTheChart(ChartData, ChartOptions, "k-datun", "Bar");
+</script>
+
+<script>
+    function MoreChartOptions() {}
+    var ChartData = {
+        labels: ["PRATUT", "TUT", "EKSEKUSI"],
+        datasets: [{
+            fillColor: "rgba(52,152,219,1)",
+            strokeColor: "rgba(52,152,219,0.5)",
+            pointColor: "rgba(52,152,219,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1.00)",
+            data: [<?= explode('+', $k_bb[0]['pratut'])[0];  ?>, <?= explode('+', $k_bb[0]['tut'])[0];  ?>, <?= explode('+', $k_bb[0]['eks'])[0];  ?>],
+            title: "Target"
+        }, {
+            fillColor: "rgba(255,208,0,1)",
+            strokeColor: "rgba(46,204,113,1)",
+            pointColor: "rgba(46,204,113,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1.00)",
+            data: [<?= explode('+', $k_bb[0]['pratut'])[1];  ?>, <?= explode('+', $k_bb[0]['tut'])[1];  ?>, <?= explode('+', $k_bb[0]['eks'])[1];  ?>],
+            title: "Realisasi"
+        }, {
+            fillColor: "rgba(255,0,0,1)",
+            strokeColor: "rgba(155,89,182,1)",
+            pointColor: "rgba(155,89,182,1)",
+            markerShape: "circle",
+            pointStrokeColor: "rgba(255,255,255,1)",
+            data: [<?= explode('+', $k_bb[0]['pratut'])[2];  ?>, <?= explode('+', $k_bb[0]['tut'])[2];  ?>, <?= explode('+', $k_bb[0]['eks'])[2];  ?>],
+            title: "Sisa Anggaran"
+        }, ]
+    };
+    ChartOptions = {
+        decimalSeparator: ".",
+        thousandSeparator: ",",
+        spaceLeft: 12,
+        spaceRight: 12,
+        spaceTop: 12,
+        spaceBottom: 12,
+        scaleLabel: "<%=value+''%>",
+        yAxisMinimumInterval: 1,
+        scaleShowLabels: true,
+        scaleShowLine: true,
+        scaleLineStyle: "solid",
+        scaleLineWidth: 1,
+        scaleLineColor: "rgba(0,0,0,0.6)",
+        scaleOverlay: false,
+        scaleOverride: false,
+        scaleSteps: 10,
+        scaleStepWidth: 10,
+        scaleStartValue: 0,
+        inGraphDataShow: true,
+        inGraphDataTmpl: '<%=v3%>',
+        inGraphDataFontFamily: "'Open Sans'",
+        inGraphDataFontStyle: "normal bold",
+        inGraphDataFontColor: "rgba(255,255,255,1.00)",
+        inGraphDataFontSize: 12,
+        inGraphDataPaddingX: 0,
+        inGraphDataPaddingY: -5,
+        inGraphDataAlign: "center",
+        inGraphDataVAlign: "middle",
+        inGraphDataXPosition: 2,
+        inGraphDataYPosition: 2,
+        inGraphDataAnglePosition: 2,
+        inGraphDataRadiusPosition: 2,
+        inGraphDataRotate: 90,
+        inGraphDataPaddingAngle: 0,
+        inGraphDataPaddingRadius: 0,
+        inGraphDataBorders: false,
+        inGraphDataBordersXSpace: 1,
+        inGraphDataBordersYSpace: 1,
+        inGraphDataBordersWidth: 1,
+        inGraphDataBordersStyle: "solid",
+        inGraphDataBordersColor: "rgba(0,0,0,1)",
+        legend: true,
+        maxLegendCols: 5,
+        legendBlockSize: 15,
+        legendFillColor: 'rgba(255,255,255,0.00)',
+        legendColorIndicatorStrokeWidth: 1,
+        legendPosX: -2,
+        legendPosY: 4,
+        legendXPadding: 0,
+        legendYPadding: 0,
+        legendBorders: false,
+        legendBordersWidth: 1,
+        legendBordersStyle: "solid",
+        legendBordersColors: "rgba(102,102,102,1)",
+        legendBordersSpaceBefore: 5,
+        legendBordersSpaceLeft: 5,
+        legendBordersSpaceRight: 5,
+        legendBordersSpaceAfter: 5,
+        legendSpaceBeforeText: 5,
+        legendSpaceLeftText: 5,
+        legendSpaceRightText: 5,
+        legendSpaceAfterText: 5,
+        legendSpaceBetweenBoxAndText: 5,
+        legendSpaceBetweenTextHorizontal: 5,
+        legendSpaceBetweenTextVertical: 5,
+        legendFontFamily: "'Open Sans'",
+        legendFontStyle: "normal normal",
+        legendFontColor: "rgba(0,0,0,1)",
+        legendFontSize: 15,
+        showYAxisMin: false,
+        rotateLabels: "smart",
+        xAxisBottom: true,
+        yAxisLeft: true,
+        yAxisRight: false,
+        scaleFontFamily: "'Open Sans'",
+        scaleFontStyle: "normal normal",
+        scaleFontColor: "rgba(0,0,0,1)",
+        scaleFontSize: 12,
+        pointLabelFontFamily: "'Open Sans'",
+        pointLabelFontStyle: "normal normal",
+        pointLabelFontColor: "rgba(102,102,102,1)",
+        pointLabelFontSize: 12,
+        angleShowLineOut: true,
+        angleLineStyle: "solid",
+        angleLineWidth: 1,
+        angleLineColor: "rgba(0,0,0,0.1)",
+        percentageInnerCutout: 50,
+        scaleShowGridLines: true,
+        scaleGridLineStyle: "solid",
+        scaleGridLineWidth: 1,
+        scaleGridLineColor: "rgba(0,0,0,0.1)",
+        scaleXGridLinesStep: 1,
+        scaleYGridLinesStep: 3,
+        segmentShowStroke: true,
+        segmentStrokeStyle: "solid",
+        segmentStrokeWidth: 2,
+        segmentStrokeColor: "rgba(255,255,255,1.00)",
+        datasetStroke: true,
+        datasetFill: true,
+        datasetStrokeStyle: "solid",
+        datasetStrokeWidth: 2,
+        bezierCurve: true,
+        bezierCurveTension: 0.4,
+        pointDotStrokeStyle: "solid",
+        pointDotStrokeWidth: 1,
+        pointDotRadius: 3,
+        pointDot: true,
+        scaleTickSizeBottom: 5,
+        scaleTickSizeTop: 5,
+        scaleTickSizeLeft: 5,
+        scaleTickSizeRight: 5,
+        graphMin: 0,
+        barShowStroke: false,
+        barBorderRadius: 0,
+        barStrokeStyle: "solid",
+        barStrokeWidth: 1,
+        barValueSpacing: 15,
+        barDatasetSpacing: 0,
+        scaleShowLabelBackdrop: true,
+        scaleBackdropColor: 'rgba(255,255,255,0.75)',
+        scaleBackdropPaddingX: 2,
+        scaleBackdropPaddingY: 2,
+        animationEasing: 'linear',
+        animateRotate: true,
+        animateScale: false,
+        animationByDataset: false,
+        animationLeftToRight: false,
+        animationSteps: 80,
+        animation: true,
+        onAnimationComplete: function() {
+            MoreChartOptions2()
+        }
+    };
+    DrawTheChart(ChartData, ChartOptions, "k-bb", "Bar");
+</script>
+<!-- Chart Kinerja Scripts End -->
+
+<?= $this->endSection(); ?>

@@ -1,0 +1,26 @@
+.navbar.CT-shadow {
+    box-shadow: 0 0 1rem rgba(0,0,0,.3),0 1px 0.3rem rgba(0,0,0,.4);
+}
+
+.medsos-button {
+    background-color: rgba(0, 0, 0, 0);
+    border: none !important;
+    text-align: left;
+    .info-box {
+        transition: .3s;
+    }
+}
+
+.medsos-button {
+    .info-box:hover {
+        box-shadow: 0 0 1rem rgba(0,0,0,.125),0 1px 0.3rem rgba(0,0,0,.2);
+        transform: scale(1.015);
+
+    }
+}
+
+.cctv {
+    img {
+        width: 80%;
+    }
+}

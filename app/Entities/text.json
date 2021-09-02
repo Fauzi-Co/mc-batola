@@ -1,0 +1,18 @@
+{
+    "help?" : "?",
+
+    "home": {
+        "title" : 
+        {
+            "text":"Selamat Datang di MediaCenter Kejari Barito Kuala",
+            "size":"s",
+            "color":"s"
+        },
+        "card-1" : 
+        {
+            "text":"Pegawai Utama",
+            "size":"s",
+            "color":"s"
+        }
+    }
+}
